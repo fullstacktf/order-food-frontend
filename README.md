@@ -10,7 +10,7 @@
 
 <p align="center"><small>From September 2021 to December 2021</small></p>
 
-<p align="center"><a href="#">View Demo</a> · <a href="https://github.com/fullstacktf/order-food-backend/issues">Report a Bug</a> · <a href="https://github.com/fullstacktf/order-food-frontend">Front-End Repository »</a></p>
+<p align="center"><a href="#">View Demo</a> · <a href="https://github.com/fullstacktf/order-food-backend/issues">Report a Bug</a> · <a href="https://github.com/fullstacktf/order-food-backend">Back-End Repository »</a></p>
 
 ## Index
 
