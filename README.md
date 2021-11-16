@@ -131,7 +131,7 @@ Added to that we use [**MIT License**](LICENSE.md).
 
 About our team:
 
-- **Manuel** González Afonso- [GitHub · Profile](https://github.com/ManuYuzu)
+- **Manuel** González Afonso - [GitHub · Profile](https://github.com/ManuYuzu)
 
 - **Nicolás** Cabrera Domínguez- [GitHub · Profile](https://github.com/jncabdom)
 
