@@ -1,10 +1,6 @@
 # README.md
 
-<<<<<<< HEAD
 <a href="https://github.com/fullstacktf/order-food-frontend/issues"><img src="https://img.shields.io/github/issues/fullstacktf/order-food-frontend?color=blue&amp;style=for-the-badge"/></a> <a href="./LICENSE.md"><img src="https://camo.githubusercontent.com/111148992d0253f8d5e36b62087d48a9eabb1d7244b2b7316214f47d5c9a8781/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f6f74686e65696c647265772f426573742d524541444d452d54656d706c6174652e7376673f7374796c653d666f722d7468652d6261646765" alt="MIT License" style="max-width: 100%;"></a>
-=======
-<a href="https://github.com/fullstacktf/order-food-frontend/issues"><img src="https://img.shields.io/github/issues/fullstacktf/order-food-backend?color=blue&amp;style=for-the-badge"/></a> <a href="./LICENSE.md"><img src="https://camo.githubusercontent.com/111148992d0253f8d5e36b62087d48a9eabb1d7244b2b7316214f47d5c9a8781/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f6f74686e65696c647265772f426573742d524541444d452d54656d706c6174652e7376673f7374796c653d666f722d7468652d6261646765" alt="MIT License" style="max-width: 100%;"></a>
->>>>>>> 0a7cfb5293bb1fc32ebccbdc41be6cb459e02866
 
 <p align="center"><img src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/285/hamburger_1f354.png"></p>
 
@@ -55,17 +51,10 @@ Comidit.App is our final project of the Fullstack's Development course organized
 
 ### Built With
 
-<<<<<<< HEAD
 ![react img](https://img.shields.io/twitter/url?color=deepskyblue&label=react.js&logo=react&logoColor=white&style=for-the-badge&url=https%3A%2F%2Fgithub.com%2Ffullstacktf%2Forder-food-frontend) ![html img](https://img.shields.io/twitter/url?color=orange&label=HTML&logo=html5&logoColor=white&style=for-the-badge&url=https%3A%2F%2Fgithub.com%2Ffullstacktf%2Forder-food-frontend) ![css img](https://img.shields.io/twitter/url?color=blue&label=CSS&logo=css3&logoColor=white&style=for-the-badge&url=https%3A%2F%2Fgithub.com%2Ffullstacktf%2Forder-food-frontend) ![css img](https://img.shields.io/twitter/url?color=dodgerblue&label=typescript&logo=typescript&logoColor=white&style=for-the-badge&url=https%3A%2F%2Fgithub.com%2Ffullstacktf%2Forder-food-frontend) ![img sass](https://img.shields.io/twitter/url?color=hotpink&label=sass&logo=sass&logoColor=white&style=for-the-badge&url=https%3A%2F%2Fgithub.com%2Ffullstacktf%2Forder-food-frontend) ![css img](https://img.shields.io/twitter/url?color=darkturquoise&label=tailwind&logo=tailwindcss&logoColor=white&style=for-the-badge&url=https%3A%2F%2Fgithub.com%2Ffullstacktf%2Forder-food-frontend)
 ![img stripe](https://img.shields.io/twitter/url?color=blueviolet&label=stripe&logo=stripe&logoColor=white&style=for-the-badge&url=https%3A%2F%2Fgithub.com%2Ffullstacktf%2Forder-food-frontend)
 
 ![go img](https://img.shields.io/twitter/url?color=cyan&label=golang&logo=go&logoColor=white&style=for-the-badge&url=https%3A%2F%2Fgithub.com%2Ffullstacktf%2Forder-food-frontend) ![img gingonic](https://img.shields.io/twitter/url?color=lightcyan&label=gingonic&logo=go&logoColor=white&style=for-the-badge&url=https%3A%2F%2Fgithub.com%2Ffullstacktf%2Forder-food-frontend) ![img mongodb](https://img.shields.io/twitter/url?color=light&label=mongodb&logo=mongodb&logoColor=white&style=for-the-badge&url=https%3A%2F%2Fgithub.com%2Ffullstacktf%2Forder-food-frontend)
-=======
-![react img](https://img.shields.io/twitter/url?color=deepskyblue&label=react.js&logo=react&logoColor=white&style=for-the-badge&url=https%3A%2F%2Fgithub.com%2Ffullstacktf%2Forder-food-backend) ![html img](https://img.shields.io/twitter/url?color=orange&label=HTML&logo=html5&logoColor=white&style=for-the-badge&url=https%3A%2F%2Fgithub.com%2Ffullstacktf%2Forder-food-backend) ![css img](https://img.shields.io/twitter/url?color=blue&label=CSS&logo=css3&logoColor=white&style=for-the-badge&url=https%3A%2F%2Fgithub.com%2Ffullstacktf%2Forder-food-backend) ![css img](https://img.shields.io/twitter/url?color=dodgerblue&label=typescript&logo=typescript&logoColor=white&style=for-the-badge&url=https%3A%2F%2Fgithub.com%2Ffullstacktf%2Forder-food-backend) ![img sass](https://img.shields.io/twitter/url?color=hotpink&label=sass&logo=sass&logoColor=white&style=for-the-badge&url=https%3A%2F%2Fgithub.com%2Ffullstacktf%2Forder-food-backend) ![css img](https://img.shields.io/twitter/url?color=darkturquoise&label=tailwind&logo=tailwindcss&logoColor=white&style=for-the-badge&url=https%3A%2F%2Fgithub.com%2Ffullstacktf%2Forder-food-backend)
-![img stripe](https://img.shields.io/twitter/url?color=blueviolet&label=stripe&logo=stripe&logoColor=white&style=for-the-badge&url=https%3A%2F%2Fgithub.com%2Ffullstacktf%2Forder-food-backend)
-
-![go img](https://img.shields.io/twitter/url?color=cyan&label=golang&logo=go&logoColor=white&style=for-the-badge&url=https%3A%2F%2Fgithub.com%2Ffullstacktf%2Forder-food-backend) ![img gingonic](https://img.shields.io/twitter/url?color=lightcyan&label=gingonic&logo=go&logoColor=white&style=for-the-badge&url=https%3A%2F%2Fgithub.com%2Ffullstacktf%2Forder-food-backend) ![img mongodb](https://img.shields.io/twitter/url?color=light&label=mongodb&logo=mongodb&logoColor=white&style=for-the-badge&url=https%3A%2F%2Fgithub.com%2Ffullstacktf%2Forder-food-backend)
->>>>>>> 0a7cfb5293bb1fc32ebccbdc41be6cb459e02866
 
 <small><p align="right">(<a href="#top">back to top</a>)</p></small>
 
@@ -84,11 +73,7 @@ npm install npm@latest -g
 1. Clone the repository
 
 ``` npm
-<<<<<<< HEAD
 https://github.com/fullstacktf/order-food-frontend.git
-=======
-https://github.com/fullstacktf/order-food-backend.git
->>>>>>> 0a7cfb5293bb1fc32ebccbdc41be6cb459e02866
 ```
 
 2. Install NPM packages
@@ -158,11 +143,7 @@ About our team:
 
 ## Acknowledgements
 
-<<<<<<< HEAD
 ![css img](https://img.shields.io/twitter/url?color=lavender&label=figma&logo=figma&logoColor=white&style=for-the-badge&url=https%3A%2F%2Fgithub.com%2Ffullstacktf%2Forder-food-frontend) ![adobe img](https://img.shields.io/twitter/url?color=gold&label=illustrator&logo=adobeillustrator&logoColor=white&style=for-the-badge&url=https%3A%2F%2Fgithub.com%2Ffullstacktf%2Forder-food-frontend)
-=======
-![css img](https://img.shields.io/twitter/url?color=lavender&label=figma&logo=figma&logoColor=white&style=for-the-badge&url=https%3A%2F%2Fgithub.com%2Ffullstacktf%2Forder-food-backend) ![adobe img](https://img.shields.io/twitter/url?color=gold&label=illustrator&logo=adobeillustrator&logoColor=white&style=for-the-badge&url=https%3A%2F%2Fgithub.com%2Ffullstacktf%2Forder-food-backend)
->>>>>>> 0a7cfb5293bb1fc32ebccbdc41be6cb459e02866
 
 <p align="center"><img src="/_images/prototype.png"/></p>
 
