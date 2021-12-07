@@ -22,6 +22,8 @@ jobs:
     #if: github.event_name == 'push' && ${{ github.ref == 'refs/heads/main' }}
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: "Deploy"
         uses: milanmk/actions-file-deployer@master
         with:
