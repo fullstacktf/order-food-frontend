@@ -1,0 +1,39 @@
+name: Test, Build & Deploy on Digital Ocean
+on: [push, pull_request]
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: install # will run `yarn install` command
+      - uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: test # will run `yarn test` command
+
+  deploy:
+    name: Build & Deploy on DO
+    needs: test
+    runs-on: ubuntu-latest
+    # Only when pushing onto main (or merging PR)
+    #if: github.event_name == 'push' && ${{ github.ref == 'refs/heads/main' }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: install # will run `yarn install` command
+      - uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: build # will run `yarn test` command
+      - name: Deploy to Digital Ocean droplet via SFTP action
+        uses: wlixcc/SFTP-Deploy-Action@v1.0
+        with:
+          server: ${{ secrets.DO_HOST }}
+          username: ${{ secrets.DO_USER }}
+          ssh_private_key: ${{ secrets.DO_KEY }}
+          local_path: './build/*'
+          remote_path: '/var/ww/html'
+          args: "-o ConnectTimeout=5"
+
