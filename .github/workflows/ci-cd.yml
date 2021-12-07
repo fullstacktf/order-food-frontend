@@ -22,16 +22,15 @@ jobs:
     #if: github.event_name == 'push' && ${{ github.ref == 'refs/heads/main' }}
     steps:
       - uses: actions/checkout@v2
-      - name: Deploy to Digital Ocean droplet via SSH action
-        uses: fifsky/ssh-action@master
+      - name: "Deploy"
+        uses: milanmk/actions-file-deployer@master
         with:
-          host: ${{ secrets.DO_HOST }}
-          user: ${{ secrets.DO_USER }}
-          key: ${{ secrets.DO_KEY }}
-          command: |
-            cd /comiditapp/front
-            touch hi.txt
-          args: "-tt"
+          remote-protocol: "sftp"
+          remote-host: ${{ secrets.DO_HOST }}
+          remote-user: ${{ secrets.DO_HOST }}
+          ssh-private-key: ${{ secrets.DO_KEY }}
+          local-path: "."
+          remote-path: "/var/www/html"
     #  - uses: borales/actions-yarn@v2.3.0
     #    with:
     #      cmd: install # will run `yarn install` command
