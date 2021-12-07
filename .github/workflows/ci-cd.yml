@@ -21,22 +21,19 @@ jobs:
     # Only when pushing onto main (or merging PR)
     #if: github.event_name == 'push' && ${{ github.ref == 'refs/heads/main' }}
     steps:
-      - uses: actions/checkout@v2
-      - name: Deploy to Digital Ocean droplet via SSH action
-        uses: wlixcc/SFTP-Deploy-Action@v1.0
-        with:
-          username: '${{ secrets.DO_USER }}'
-          server: '${{ secrets.DO_HOST }}'
-          ssh_private_key: ${{ secrets.DO_KEY }}
-          local_path: './build/*'
-          remote_path: '/var/www/html'
-          args: '-o ConnectTimeout=5'
-
     #  - uses: borales/actions-yarn@v2.3.0
     #    with:
     #      cmd: install # will run `yarn install` command
     #  - uses: borales/actions-yarn@v2.3.0
     #    with:
     #      cmd: build # will run `yarn test` command
-    #  - name: deploy file to server
+      - uses: actions/checkout@v2
+      - name: Deploy to Digital Ocean droplet via SSH action
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.DO_HOST }}
+          username: ${{ secrets.DO_USER }}
+          key: ${{ secrets.DO_KEY }}
+          source: "."
+          target: "/var/www/html"
 
