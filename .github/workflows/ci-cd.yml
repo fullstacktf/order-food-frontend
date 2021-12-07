@@ -15,7 +15,7 @@ jobs:
 
   deploy:
     name: Build & Deploy on DO
-    needs: test
+    #needs: test
     runs-on: ubuntu-latest
     # Only when pushing onto main (or merging PR)
     #if: github.event_name == 'push' && ${{ github.ref == 'refs/heads/main' }}
