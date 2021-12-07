@@ -27,13 +27,13 @@ jobs:
       - uses: borales/actions-yarn@v2.3.0
         with:
           cmd: build # will run `yarn test` command
-      - name: Deploy to Digital Ocean droplet via SFTP action
+      - name: deploy file to server
         uses: wlixcc/SFTP-Deploy-Action@v1.0
         with:
-          server: ${{ secrets.DO_HOST }}
-          username: ${{ secrets.DO_USER }}
+          username: '${{ secrets.DO_USER }}'
+          server: '${{ secrets.DO_HOST }}'
           ssh_private_key: ${{ secrets.DO_KEY }}
           local_path: './build/*'
-          remote_path: '/var/ww/html'
-          args: "-o ConnectTimeout=5"
+          remote_path: '/var/www/html'
+          args: '-o ConnectTimeout=5'
 
