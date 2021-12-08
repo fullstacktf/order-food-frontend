@@ -1,26 +1,20 @@
-import React from 'react';
-import './App.css';
-import logo from './logo.svg';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import React from "react";
+import { Routes } from "react-router";
+import { BrowserRouter, Route } from "react-router-dom";
+import "./App.css";
+import { ProductInfo } from "./components/ProductsInfo/ProductInfo";
+const App = () => (
+  <div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/"></Route>
+        <Route path="/tote" element={<ProductInfo />}></Route>
+        <Route path=""></Route>
+        <Route path=""></Route>
+        <Route path=""></Route>
+      </Routes>
+    </BrowserRouter>
+  </div>
+);
 
 export default App;
