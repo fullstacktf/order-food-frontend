@@ -12,7 +12,7 @@ jobs:
     name: Build & Deploy on Digital Ocean
     needs: test
     runs-on: ubuntu-latest
-    # Only when pushing onto main (or merging PR)
+    # Only when pushing onto main ( or merging PR )
     if: github.event_name == 'push' && ${{ github.ref == 'refs/heads/main' }}
     steps:
       - uses: actions/checkout@v2
