@@ -1,0 +1,29 @@
+name: Test, Build & Deploy on Digital Ocean
+on: [push, pull_request]
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm ci && npm test
+
+  deploy:
+    name: Build & Deploy on Digital Ocean
+    needs: test
+    runs-on: ubuntu-latest
+    # Only when pushing onto main (or merging PR)
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm install
+      - run: npm run build
+      - name: Deploy to Digital Ocean droplet via SSH action
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.DO_HOST }}
+          username: ${{ secrets.DO_USER }}
+          key: ${{ secrets.DO_KEY }}
+          source: "build/*"
+          target: "/var/www/html"
+          strip_components: 1
