@@ -13,7 +13,7 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     # Only when pushing onto main (or merging PR)
-    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}  
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
     steps:
       - uses: actions/checkout@v2
       - run: npm install
