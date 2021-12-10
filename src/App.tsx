@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes } from "react-router";
 import { BrowserRouter, Route } from "react-router-dom";
-import "./App.css";
+import './assets/styles/main.css'
 import { ProductInfo } from "./components/ProductsInfo/ProductInfo";
 const App = () => (
   <div>
