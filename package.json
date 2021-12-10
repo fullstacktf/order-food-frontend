@@ -11,6 +11,16 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "history": "^5.1.0",
+    "postcss-bem": "^0.4.1",
+    "postcss-color-emoji": "^4.0.0",
+    "postcss-conditionals": "^2.1.0",
+    "postcss-extend": "^1.0.5",
+    "postcss-import": "^14.0.2",
+    "postcss-nested": "^5.0.6",
+    "postcss-nested-vars": "^1.0.0",
+    "postcss-pxtorem": "^6.0.0",
+    "postcss-simple-vars": "^6.0.3",
+    "postcss-use": "^3.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router": "^6.0.2",
@@ -20,10 +30,12 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "npm run watch:css && react-scripts start",
+    "build": "npm run build:css && react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build:css": "postcss src/assets/styles/styles.pcss -o src/assets/styles/main.css",
+    "watch:css": "postcss src/assets/styles/styles.pcss -o src/assets/styles/main.css"
   },
   "eslintConfig": {
     "extends": [
@@ -44,6 +56,10 @@
     ]
   },
   "devDependencies": {
-    "eslint-config-prettier": "^8.3.0"
+    "autoprefixer": "^10.4.0",
+    "eslint-config-prettier": "^8.3.0",
+    "postcss": "^8.4.4",
+    "postcss-cli": "^9.0.2",
+    "postcss-loader": "^6.2.1",
   }
 }
