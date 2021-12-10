@@ -5,8 +5,6 @@ module.exports = {
         preset: 'default',
     }),
     require('postcss-import'),
-    require('tailwindcss'),
-    require('autoprefixer'),
     require('postcss-nesting'),
     require('postcss-extend'),
     require('postcss-bem'),
