@@ -1,0 +1,144 @@
+.order_summary_container {
+  display: flex;
+  height: 100vh;
+
+  & .order_summary_container__child {
+    padding: 45px;
+
+    &.sideNav {
+      width: 200px;
+      background: gold;
+    }
+
+    &.products {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+
+      & .product_holder {
+        & img {
+          width: 10%;
+        }
+
+        & .product_counter {
+          width: 10%;
+
+          & .number_input {
+            width: 40%;
+            text-align: center;
+          }
+        }
+        & p {
+          text-align: center;
+          width: 16.67%;
+        }
+        & .button_holder {
+          width: 4%;
+        }
+
+        & .product_data {
+          width: 16.67%;
+          & .product_category {
+            color: red;
+          }
+
+          & .product_name {
+            margin: 5px;
+            width: 100%;
+          }
+
+          & .product_category {
+            width: 100%;
+          }
+        }
+
+        & .delete_btn {
+          background: #f23445;
+          border: 1px solid black;
+          box-shadow: 2px 2px 1px black;
+          padding: 5px;
+          border-radius: 15px;
+
+          &:hover {
+            transform: scale(1.1);
+            background: #eeee;
+          }
+        }
+      }
+    }
+
+    &.summary {
+      display: flex;
+      flex-direction: column;
+      width: 500px;
+      background: #f5f5f6;
+
+      & .cart_summary {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+    }
+  }
+}
+
+.shopping_cart_header {
+  border-bottom: 1px solid gray;
+}
+
+.product_counter {
+  & .counter_button {
+    cursor: pointer;
+    user-select: none;
+    border: none;
+  }
+
+  & .number_input {
+    margin: 5px;
+    text-align: center;
+    width: 30px;
+  }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.flex_centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+
+  &.around {
+    justify-content: space-around;
+  }
+
+  &.between {
+    justify-content: space-between;
+  }
+
+  &.start {
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  &.end {
+    justify-content: flex-end;
+  }
+
+  &.columns {
+    flex-direction: column;
+  }
+}
+
+.payment_info {
+  height: 100%;
+}
