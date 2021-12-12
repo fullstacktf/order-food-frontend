@@ -1,8 +1,8 @@
 import React from "react";
 import { Routes } from "react-router";
 import { BrowserRouter, Route } from "react-router-dom";
-import './assets/styles/main.css'
-import { OrderSummary } from "./features/OrderSummary/pages/OrderSummary";
+import './main.css'
+import { OrderSummary } from "./pages/OrderSummary/OrderSummary";
 
 const App = () => (
   <div>
@@ -10,9 +10,7 @@ const App = () => (
       <Routes>
         <Route path="/"></Route>
         <Route path="/summary" element={<OrderSummary />}></Route>
-        <Route path=""></Route>
-        <Route path=""></Route>
-        <Route path=""></Route>
+        <Route path="*"></Route>
       </Routes>
     </BrowserRouter>
   </div>
