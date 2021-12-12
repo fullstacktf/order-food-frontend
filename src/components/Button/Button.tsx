@@ -7,7 +7,11 @@ interface ButtonProps {
 }
 
 export const Button: FC<ButtonProps> = ({ text, styles, onClickHandler }) => {
-  return styles ?
-    (<button className={styles}  onClick={onClickHandler}>{text}</button>) : (<button onClick={onClickHandler}>{text}</button>)
-  }
-
+  return styles ? (
+    <button className={styles} onClick={onClickHandler}>
+      {text}
+    </button>
+  ) : (
+    <button onClick={onClickHandler}>{text}</button>
+  )
+}

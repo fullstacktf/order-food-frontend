@@ -43,7 +43,7 @@
 .order_summary_container__child.products
   .product_holder
   .product_counter
-  .number_input[type="number"] {
+  .number_input[type='number'] {
   -moz-appearance: textfield;
 }
 .order_summary_container__child.products

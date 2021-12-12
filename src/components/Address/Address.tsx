@@ -1,13 +1,18 @@
-import React, { FC } from "react";
+import React, { FC } from 'react'
 interface AddressProps {
-  street: string;
-  zipcode: number;
-  country: string;
-  city: string;
+  street: string
+  zipcode: number
+  country: string
+  city: string
 }
 
-export const Address: FC<AddressProps> = ({ street, zipcode, country, city }) => (
-  <div className='summary_address'>
+export const Address: FC<AddressProps> = ({
+  street,
+  zipcode,
+  country,
+  city,
+}) => (
+  <div className="summary_address">
     <h2>Address information</h2>
     <ul>
       <li>
@@ -27,5 +32,5 @@ export const Address: FC<AddressProps> = ({ street, zipcode, country, city }) =>
         {city}
       </li>
     </ul>
-  </div >
-);
+  </div>
+)
