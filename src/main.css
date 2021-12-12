@@ -12,16 +12,11 @@
 .order_summary_container {
   display: flex;
   height: 100vh;
+  width: 100vw;
 }
 /* Imports ALL Views */
 .order_summary_container__child {
   padding: 45px;
-
-  /* TODO, take this out when sidenav component is available */
-}
-.order_summary_container__child.sideNav {
-  width: 200px;
-  background: gold;
 }
 .order_summary_container__child.products {
   width: 100%;
@@ -102,7 +97,7 @@
 .order_summary_container__child.summary {
   display: flex;
   flex-direction: column;
-  width: 500px;
+  width: 25%;
   background: #f5f5f6;
 }
 .order_summary_container__child.summary .cart_summary {

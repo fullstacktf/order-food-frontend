@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { Address } from '../Address'
-import { Button } from '../Button'
-import { PaymentTotalPrice } from '../PaymentTotalPrice'
-import { Product } from '../Product'
+import { Address } from '../../components/Address/Address'
+import { Button } from '../../components/Button/Button'
+import { PaymentTotalPrice } from '../../components/PaymentTotalPrice/PaymentTotalPrice'
+import { Product } from '../../components/Product/Product'
 
 // This should come from localStorage
 const products = [
@@ -49,7 +49,6 @@ export const OrderSummary = () => {
 
   return (
     <div className='order_summary_container'>
-      <div className="order_summary_container__child sideNav">nav</div>
       <div className="order_summary_container__child products">
         <div className="shopping_cart_header flex_centered between">
           <h2>Shopping Cart</h2>

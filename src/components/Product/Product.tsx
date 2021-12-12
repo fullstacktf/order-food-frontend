@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from 'react'
-import { Button } from './Button'
-import { ProductCounter } from './ProductCounter'
+import { Button } from '../Button/Button'
+import { ProductCounter } from '../ProductCounter/ProductCounter'
 
 interface ProductProps {
   name: string
