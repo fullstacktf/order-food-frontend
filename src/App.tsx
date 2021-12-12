@@ -1,21 +1,26 @@
-import React from "react";
-import { Routes } from "react-router";
-import { BrowserRouter, Route } from "react-router-dom";
-import './assets/styles/main.css'
-import { OrderSummary } from "./features/OrderSummary/pages/OrderSummary";
+import React from 'react';
+import logo from './logo.svg';
+import './App.css';
 
-const App = () => (
-  <div>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/"></Route>
-        <Route path="/summary" element={<OrderSummary />}></Route>
-        <Route path=""></Route>
-        <Route path=""></Route>
-        <Route path=""></Route>
-      </Routes>
-    </BrowserRouter>
-  </div>
-);
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.tsx</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+  );
+}
 
 export default App;
