@@ -1,3 +1,4 @@
+import styled from '@emotion/styled'
 import React, { FC } from 'react'
 
 interface ButtonProps {
@@ -6,8 +7,15 @@ interface ButtonProps {
   text: string
 }
 
+interface InnerButtonProps {
+styles?: string
+}
+const ButtonElement = styled.button`
+${(props:InnerButtonProps) => props.styles}
+`
+
 export const Button: FC<ButtonProps> = ({ text, styles, onClickHandler }) => {
   return styles ?
-    (<button className={styles}  onClick={onClickHandler}>{text}</button>) : (<button onClick={onClickHandler}>{text}</button>)
+    (<ButtonElement styles={ styles } onClick={onClickHandler}>{text}</ButtonElement>) : (<button onClick={onClickHandler}>{text}</button>)
   }
 

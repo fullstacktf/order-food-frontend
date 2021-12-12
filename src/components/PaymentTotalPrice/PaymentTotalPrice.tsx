@@ -9,7 +9,7 @@ export const PaymentTotalPrice: FC<PaymentTotalPriceProps> = ({number_of_items, 
   return (
     <div className='flex_centered start columns'>
       <span><strong>Total Price ({number_of_items} items)</strong></span>
-      <h3 className='payment_price_value'> {total_price.toFixed(2)} €</h3>
+      <h3> {total_price.toFixed(2)} €</h3>
     </div>
   )
 }
