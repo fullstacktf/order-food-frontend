@@ -3,7 +3,7 @@ import React from 'react'
 export const Error404 = () => {
   return (
     <div>
-<p>aaaa</p>
+      <p>aaaa</p>
     </div>
   )
 }
