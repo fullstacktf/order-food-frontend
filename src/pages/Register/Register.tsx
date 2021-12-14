@@ -10,7 +10,7 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
-import { Address, signUp, User } from '../../api/auth.api'
+import { signUp, User } from '../../api/auth.api'
 
 interface FormData {
   role: string
@@ -108,7 +108,7 @@ export const Register = () => {
       name: data.name,
       email: data.email,
       hashedPassword: data.hashedPassword,
-      phone: data.phone,
+      phone: +data.phone,
       address: [
         {
           city: data.city,

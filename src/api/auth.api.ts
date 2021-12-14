@@ -1,6 +1,5 @@
 import axios from "axios";
 
-
 const BASE_URL = process.env.BASE_URL
 
 export interface User {
@@ -22,7 +21,7 @@ export interface Address {
 
 export const signUp = async (newUser: User) => {
   console.log(BASE_URL)
-  axios.post(`localhost:3000/auth/signup`, newUser)
+  axios.post(`http://localhost:3000/auth/signup`, newUser)
     .then(function (response) {
       console.log(response);
     });
