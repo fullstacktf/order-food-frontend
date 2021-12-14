@@ -6,10 +6,24 @@ import {
   SelectChangeEvent,
   TextField,
 } from '@mui/material'
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
+import { Address, signUp, User } from '../../api/auth.api'
+
+interface FormData {
+  role: string
+  name: string
+  email: string
+  hashedPassword: string
+  phone: number
+  street: string
+  country: string
+  postalCode: number
+  city: string
+  streetNumber: number
+}
 
 const Container = styled.div`
   margin: 0;
@@ -69,7 +83,7 @@ const schema = yup
         RegExp(/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{3})$/),
         'Invalid phone number'
       ),
-    password: yup.string().required('Password is a required field'),
+    hashedPassword: yup.string().required('Password is a required field'),
     street: yup.string().required('Street is a required field'),
     streetNumber: yup.string().required('Street Number is a required field'),
     city: yup.string().required('City is a required field'),
@@ -79,22 +93,37 @@ const schema = yup
   .required()
 
 export const Register = () => {
-  const [role, setRole] = React.useState('user')
-
+  const [role, setRole] = useState('user')
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm({
     resolver: yupResolver(schema),
   })
-  const onSubmit = (data: any) => {
-    // validate address, complex stuff
-    console.log(data)
+  const onSubmit = (data: FormData) => {
+    const newUser: User = {
+      ...data,
+      address: [
+        {
+          city: data.city,
+          country: data.country,
+          postalCode: data.postalCode,
+          street: data.street,
+          streetNumber: data.streetNumber,
+        },
+      ],
+    }
+    console.log(newUser)
+    //signUp(newUser)
   }
 
-  const handleRoleChange = (event: SelectChangeEvent<unknown>) => {
-    setRole(event.target.value as string)
+  const handleOnChange = (event: SelectChangeEvent<unknown>) => {
+    console.log(errors)
+    const value = event.target.value as string
+    setRole(value)
+    setValue('role', role)
   }
 
   return (
@@ -107,7 +136,7 @@ export const Register = () => {
               labelId="role-select-label"
               value={role}
               label="Role"
-              onChange={handleRoleChange}
+              onChange={handleOnChange}
             >
               <MenuItem value={'user'}>user</MenuItem>
               <MenuItem value={'restaurant'}>restaurant</MenuItem>
@@ -127,12 +156,12 @@ export const Register = () => {
               {...register('email')}
             />
             <TextFieldStyled
-              error={errors.password}
-              helperText={errors.password?.message}
+              error={errors.hashedPassword}
+              helperText={errors.hashedPassword?.message}
               label="Password"
               type="password"
               variant="outlined"
-              {...register('password')}
+              {...register('hashedPassword')}
             />
             <TextFieldStyled
               error={errors.phone}
