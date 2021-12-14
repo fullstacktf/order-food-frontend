@@ -104,7 +104,11 @@ export const Register = () => {
   })
   const onSubmit = (data: FormData) => {
     const newUser: User = {
-      ...data,
+      role: data.role,
+      name: data.name,
+      email: data.email,
+      hashedPassword: data.hashedPassword,
+      phone: data.phone,
       address: [
         {
           city: data.city,
@@ -116,7 +120,7 @@ export const Register = () => {
       ],
     }
     console.log(newUser)
-    //signUp(newUser)
+    signUp(newUser)
   }
 
   const handleOnChange = (event: SelectChangeEvent<unknown>) => {
@@ -125,6 +129,8 @@ export const Register = () => {
     setRole(value)
     setValue('role', role)
   }
+
+  setValue('role', role)
 
   return (
     <Container>

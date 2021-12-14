@@ -21,7 +21,8 @@ export interface Address {
 }
 
 export const signUp = async (newUser: User) => {
-  axios.post(`${BASE_URL}/auth/signup`, newUser)
+  console.log(BASE_URL)
+  axios.post(`localhost:3000/auth/signup`, newUser)
     .then(function (response) {
       console.log(response);
     });
