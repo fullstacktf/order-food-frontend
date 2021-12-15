@@ -3,17 +3,49 @@ import Avatar from '@mui/material/Avatar'
 import Rating from '@mui/material/Rating'
 import Typography from '@mui/material/Typography'
 import React from 'react'
-import { AddressDetails } from './AddressDetails'
-import { Title } from './Title'
+import { AddressDetails } from './AddressDetails/AddressDetails'
+import { ProductInfo } from './models/ProductInfo.model'
+import { Product } from './Product/Product'
+import { Title } from './Title/Title'
 
 const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  text-align: center;
+  width: 100vw;
+`
+
+const ProductsContainer = styled(Container)`
+  justify-content: flex-start;
+  padding: 20px;
 `
 
 const Header = styled.div``
+
+const products: ProductInfo[] = [
+  {
+    category: 'mainCourse',
+    name: 'Bocadillo Clásico Embutidos',
+    price: 1.4,
+  },
+  {
+    category: 'mainCourse',
+    name: 'Perrito Especial Mexicano',
+    price: 3.0,
+  },
+  {
+    category: 'appetizer',
+    name: 'Ensaladilla',
+    price: 42342.2,
+  },
+  {
+    category: 'appetizer',
+    name: 'Bolitas de coco',
+    price: 4.2,
+  },
+]
 
 export const RestaurantDetails = () => {
   return (
@@ -36,6 +68,11 @@ export const RestaurantDetails = () => {
           postalCode={38204}
           streetNumber={12}
         ></AddressDetails>
+        <ProductsContainer>
+          {products.map((p) => (
+            <Product {...p}></Product>
+          ))}
+        </ProductsContainer>
       </Header>
     </Container>
   )
