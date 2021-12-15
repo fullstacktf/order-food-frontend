@@ -6,12 +6,12 @@ interface ProductCounterProps {
   updateTotalPrice: (quantity: number) => void
 }
 
-const buttonStyle = `
+/*const buttonStyle = `
   cursor: pointer;
   user-select: none;
   border: none;
   min-width: 20px;
-`
+`*/
 
 const Container = styled.div`
   width: 10%;
