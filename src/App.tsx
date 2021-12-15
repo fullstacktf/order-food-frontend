@@ -1,16 +1,24 @@
+import styled from '@emotion/styled'
+import { Login } from '@mui/icons-material'
 import React from 'react'
 import { Routes } from 'react-router'
 import { BrowserRouter, Link, Route } from 'react-router-dom'
-import './main.css'
+import { Navbar } from './components/Navbar/Navbar'
 import { Error404 } from './pages/Error404'
 import { OrderSummary } from './pages/OrderSummary/OrderSummary'
+import './main.css'
 import { Register } from './pages/Register/Register'
-import { Login } from './pages/Login/Login'
 import { RestaurantDetails } from './pages/RestaurantDetails/RestaurantDetails'
 
+const MainApp = styled.div`
+  display: flex;
+  margin: 0;
+`
+
 const App = () => (
-  <div>
+  <MainApp>
     <BrowserRouter>
+      <Navbar></Navbar>
       <Routes>
         <Route path="/"></Route>
         <Route path="/register" element={<Register />}></Route>
@@ -22,7 +30,7 @@ const App = () => (
       <Link to="/summary">Summary</Link>
       <Link to="/restaurant">Restaurant</Link>
     </BrowserRouter>
-  </div>
+  </MainApp>
 )
 
 export default App
