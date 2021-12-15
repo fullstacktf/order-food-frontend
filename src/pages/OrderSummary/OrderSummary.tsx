@@ -64,6 +64,8 @@ const products = [
 
 export const OrderSummary = () => {
   const [allProducts, setallProducts] = useState(new Array(products.length))
+  // pillar de localstorage, pasar a un comp. hijo como props
+
   const [totalPrice, setTotalPrice] = useState(0)
   const [numberOfItems, setNumberOfItems] = useState(0)
 
