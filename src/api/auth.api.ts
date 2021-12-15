@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = process.env.BASE_URL
+const BASE_URL = process.env.REACT_APP_BASE_URL
 
 export interface User {
 	"role"           :string,
@@ -11,6 +11,11 @@ export interface User {
   "address"        :Address[],
 }
 
+export interface LoginUser {
+  "email"          :string,
+	"hashedPassword" :string,
+}
+
 export interface Address {
   "street": string
   "streetNumber": number
@@ -19,10 +24,12 @@ export interface Address {
   "city": string
 }
 
-export const signUp = async (newUser: User) => {
-  console.log(BASE_URL)
-  axios.post(`http://localhost:3000/auth/signup`, newUser)
-    .then(function (response) {
-      console.log(response);
-    });
+export const signUp = (newUser: User) => {
+  axios.post(`${BASE_URL}auth/signup`, newUser)
+    .then((response) => console.log(response))
+}
+
+export const signIn = (user: LoginUser) => {
+  axios.post(`${BASE_URL}auth/signin`, user)
+  .then((response) => console.log(response))
 }

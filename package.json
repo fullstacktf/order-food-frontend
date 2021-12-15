@@ -27,7 +27,7 @@
     "yup": "^0.32.11"
   },
   "scripts": {
-    "start": "PORT=8080 react-scripts start",
+    "start": "PORT=8080 REACT_APP_BASE_URL=http://localhost:3000/ react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "clean": "rm -Rf build",
@@ -42,7 +42,6 @@
       "react-app/jest"
     ]
   },
-  "proxy": "http://localhost:3000/",
   "browserslist": {
     "production": [
       ">0.2%",
