@@ -5,10 +5,15 @@ interface PaymentTotalPriceProps {
   total_price: number
 }
 
-export const PaymentTotalPrice: FC<PaymentTotalPriceProps> = ({number_of_items, total_price}) => {
+export const PaymentTotalPrice: FC<PaymentTotalPriceProps> = ({
+  number_of_items,
+  total_price,
+}) => {
   return (
-    <div className='flex_centered start columns'>
-      <span><strong>Total Price ({number_of_items} items)</strong></span>
+    <div className="flex_centered start columns">
+      <span>
+        <strong>Total Price ({number_of_items} items)</strong>
+      </span>
       <h3> {total_price.toFixed(2)} €</h3>
     </div>
   )

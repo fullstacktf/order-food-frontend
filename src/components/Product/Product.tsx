@@ -4,7 +4,7 @@ import { Button } from '../Button/Button'
 import { ProductCounter } from '../ProductCounter/ProductCounter'
 
 const ProductData = styled.div`
-width: 16.67%;
+  width: 16.67%;
 `
 
 const PricedText = styled.p`
@@ -23,7 +23,7 @@ const ProductCategory = styled.p`
 `
 
 const ButtonHolder = styled.div`
-width: 4%;
+  width: 4%;
 `
 
 const DeleteButtonStyle = `
@@ -50,29 +50,39 @@ interface ProductProps {
   handleTotalPrice: (totalPrice: number, price: number) => void
 }
 
-export const Product: FC<ProductProps> = ({ name, category, image, price, handleTotalPrice }) => {
+export const Product: FC<ProductProps> = ({
+  name,
+  category,
+  image,
+  price,
+  handleTotalPrice,
+}) => {
   const [totalPrice, setTotalPrice] = useState(price)
   const updateTotalPriceFun = (quantity: number) => {
-    setTotalPrice(quantity * price);
+    setTotalPrice(quantity * price)
   }
 
   useEffect(() => {
-    handleTotalPrice(totalPrice, price);
+    handleTotalPrice(totalPrice, price)
   }, [totalPrice, handleTotalPrice, price])
 
   return (
     <div className="product_holder flex_centered around">
       <ProductImage src={image} alt={name} />
       <ProductData className="flex_centered columns">
-        <ProductName><strong> {name} </strong></ProductName>
-        <ProductCategory><strong> {category} </strong></ProductCategory>
+        <ProductName>
+          <strong> {name} </strong>
+        </ProductName>
+        <ProductCategory>
+          <strong> {category} </strong>
+        </ProductCategory>
       </ProductData>
       <ProductCounter updateTotalPrice={updateTotalPriceFun}></ProductCounter>
       <PricedText>Price: {price} €</PricedText>
       <PricedText>Total: {totalPrice.toFixed(2)} €</PricedText>
       <ButtonHolder className="flex_centered">
-        <Button text="🗑️" styles={ DeleteButtonStyle }></Button>
+        <Button text="🗑️" styles={DeleteButtonStyle}></Button>
       </ButtonHolder>
-    </div >
+    </div>
   )
 }

@@ -4,18 +4,22 @@ import React, { FC } from 'react'
 interface ButtonProps {
   onClickHandler?: () => void
   styles?: string
-  text: string
+  text: any
 }
 
 interface InnerButtonProps {
-styles?: string
+  styles?: string
 }
 const ButtonElement = styled.button`
-${(props:InnerButtonProps) => props.styles}
+  ${(props: InnerButtonProps) => props.styles}
 `
 
 export const Button: FC<ButtonProps> = ({ text, styles, onClickHandler }) => {
-  return styles ?
-    (<ButtonElement styles={ styles } onClick={onClickHandler}>{text}</ButtonElement>) : (<button onClick={onClickHandler}>{text}</button>)
-  }
-
+  return styles ? (
+    <ButtonElement styles={styles} onClick={onClickHandler}>
+      {text}
+    </ButtonElement>
+  ) : (
+    <button onClick={onClickHandler}>{text}</button>
+  )
+}
