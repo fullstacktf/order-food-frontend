@@ -1,7 +1,6 @@
 import React from 'react'
 import { Routes } from 'react-router'
 import { BrowserRouter, Link, Route } from 'react-router-dom'
-import './main.css'
 import { OrderSummary } from './pages/OrderSummary/OrderSummary'
 import { Home } from './pages/Home/Home'
 import styled from '@emotion/styled'
@@ -10,6 +9,8 @@ import { Navbar } from './components/Navbar/Navbar'
 import { Error404 } from './pages/Error404'
 import { Register } from './pages/Register/Register'
 import { RestaurantDetails } from './pages/RestaurantDetails/RestaurantDetails'
+
+import './index.css'
 
 const MainApp = styled.div`
   display: flex;
