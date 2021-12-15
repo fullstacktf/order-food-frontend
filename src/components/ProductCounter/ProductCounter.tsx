@@ -60,11 +60,7 @@ export const ProductCounter: FC<ProductCounterProps> = ({
 
   return (
     <Container className="flex_centered around">
-      <Button
-        text="-"
-        styles={buttonStyle}
-        onClickHandler={handleClick(-1)}
-      ></Button>
+      <Button text="-" onClickHandler={handleClick(-1)}></Button>
       <NumberInput
         type="number"
         min="1"
@@ -72,11 +68,7 @@ export const ProductCounter: FC<ProductCounterProps> = ({
         value={inputValue}
         onChange={inputChange}
       />
-      <Button
-        text="+"
-        styles={buttonStyle}
-        onClickHandler={handleClick(1)}
-      ></Button>
+      <Button text="+" onClickHandler={handleClick(1)}></Button>
     </Container>
   )
 }

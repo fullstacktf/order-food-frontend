@@ -81,7 +81,7 @@ export const Product: FC<ProductProps> = ({
       <PricedText>Price: {price} €</PricedText>
       <PricedText>Total: {totalPrice.toFixed(2)} €</PricedText>
       <ButtonHolder className="flex_centered">
-        <Button text="🗑️" styles={DeleteButtonStyle}></Button>
+        <Button text="🗑️"></Button>
       </ButtonHolder>
     </div>
   )

@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@800&family=Quantico&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+body,
+html,
+#root {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  font-family: "Roboto", sans-serif;
+}
+
+.flex_centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+
+  &.around {
+    justify-content: space-around;
+  }
+
+  &.between {
+    justify-content: space-between;
+  }
+
+  &.start {
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  &.end {
+    justify-content: flex-end;
+  }
+
+  &.columns {
+    flex-direction: column;
+  }
+}
