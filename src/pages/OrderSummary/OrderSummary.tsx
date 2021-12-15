@@ -1,9 +1,9 @@
 import styled from '@emotion/styled'
 import React, { useState } from 'react'
-import { Address } from '../../components/Address/Address'
+import { Address } from './components/Address/Address'
 import { Button } from '../../components/Button/Button'
-import { PaymentTotalPrice } from '../../components/PaymentTotalPrice/PaymentTotalPrice'
-import { Product } from '../../components/Product/Product'
+import { PaymentTotalPrice } from './components/PaymentTotalPrice/PaymentTotalPrice'
+import { Product } from './components/Product/Product'
 
 const Container = styled.div`
   display: flex;
