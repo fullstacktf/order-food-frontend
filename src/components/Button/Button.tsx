@@ -3,7 +3,7 @@ import React, { FC } from 'react'
 interface ButtonProps {
   onClickHandler?: () => void
   styles?: string
-  text: string
+  text: any
 }
 
 export const Button: FC<ButtonProps> = ({ text, styles, onClickHandler }) => {
