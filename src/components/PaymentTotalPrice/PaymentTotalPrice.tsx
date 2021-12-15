@@ -14,7 +14,7 @@ export const PaymentTotalPrice: FC<PaymentTotalPriceProps> = ({
       <span>
         <strong>Total Price ({number_of_items} items)</strong>
       </span>
-      <h3 className="payment_price_value"> {total_price.toFixed(2)} €</h3>
+      <h3> {total_price.toFixed(2)} €</h3>
     </div>
   )
 }
