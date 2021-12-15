@@ -4,8 +4,8 @@ import React, { FC } from 'react'
 interface ButtonProps {
   onClickHandler?: () => void
   theme?: string
-  icon?: any
-  text?: string
+  icon: any
+  text: string
 }
 
 const StyledButton = styled.button`
@@ -35,8 +35,8 @@ export const Button: FC<ButtonProps> = ({
 }) => {
   return (
     <StyledButton theme={theme} onClick={onClickHandler}>
-      {icon && <ButtonContent>{icon}</ButtonContent>}
-      {text && <ButtonContent>{text}</ButtonContent>}
+      <ButtonContent>{icon}</ButtonContent>
+      <ButtonContent>{text}</ButtonContent>
     </StyledButton>
   )
 }
