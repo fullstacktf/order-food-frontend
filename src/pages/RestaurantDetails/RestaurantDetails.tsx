@@ -3,10 +3,10 @@ import Avatar from '@mui/material/Avatar'
 import Rating from '@mui/material/Rating'
 import Typography from '@mui/material/Typography'
 import React from 'react'
-import { AddressDetails } from './AddressDetails/AddressDetails'
+import { AddressDetails } from './components/AddressDetails/AddressDetails'
 import { ProductInfo } from './models/ProductInfo.model'
-import { Product } from './Product/Product'
-import { Title } from './Title/Title'
+import { Product } from './components/Product/Product'
+import { Title } from '../../components/Title/Title'
 
 const Container = styled.div`
   display: flex;

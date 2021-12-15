@@ -7,11 +7,6 @@ import * as yup from 'yup'
 import { FormInput } from '../../components/FormInput/FormInput'
 import { LoginUser, signIn } from '../../api/auth.api'
 
-interface FormData {
-  email: string
-  password: string
-}
-
 const Container = styled.div`
   margin: 0;
   height: 100vh;
@@ -29,11 +24,6 @@ const Form = styled.form`
   align-items: center;
   flex-direction: column;
   height: 100%;
-`
-
-const TextFieldStyled = styled(TextField)`
-  width: 100%;
-  margin-top: 10px;
 `
 
 const schema = yup

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import React, { FC, SyntheticEvent, useEffect, useState } from 'react'
-import { Button } from '../Button/Button'
+import { Button } from '../../../../components/Button/Button'
 
 interface ProductCounterProps {
   updateTotalPrice: (quantity: number) => void

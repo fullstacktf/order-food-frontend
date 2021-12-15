@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import React, { FC, useEffect, useState } from 'react'
-import { Button } from '../Button/Button'
+import { Button } from '../../../../components/Button/Button'
 import { ProductCounter } from '../ProductCounter/ProductCounter'
 
 const ProductData = styled.div`
