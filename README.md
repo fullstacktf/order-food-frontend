@@ -64,7 +64,7 @@ CComidit.App is our final project for the Fullstack's Development course organiz
 
 To get a local copy up and running follow these simple steps:
 
-``` npm
+```npm
 npm install npm@latest -g
 ```
 
@@ -72,13 +72,13 @@ npm install npm@latest -g
 
 1. Clone the repository
 
-``` npm
+```npm
 https://github.com/fullstacktf/order-food-backend.git
 ```
 
 2. Install NPM packages
 
-``` npm
+```npm
 npm install
 ```
 
@@ -86,7 +86,7 @@ npm install
 
 ## Usage
 
-We're still working on Comidit.App.  Meanwhile, you can [check our progress](https://github.com/fullstacktf/order-food-frontend/projects/1) (kanban board).
+We're still working on Comidit.App. Meanwhile, you can [check our progress](https://github.com/fullstacktf/order-food-frontend/projects/1) (kanban board).
 
 <small><p align="right">(<a href="#top">back to top</a>)</p></small>
 
@@ -114,7 +114,7 @@ According to our MVP we will develop this features. The unchecked ones are extra
 
 <p align="center"><img src="https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png"/></p>
 
-Distributed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">**Creative Commons BY-NC-SA**</a>. This license allows reusers to distribute, remix, adapt, and build upon the material in any medium or  format for noncommercial purposes only, and only so long as attribution  is given to the creator. If you remix, adapt, or build upon the  material, you must license the modified material under identical terms. CC BY-NC-SA includes the following elements:
+Distributed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">**Creative Commons BY-NC-SA**</a>. This license allows reusers to distribute, remix, adapt, and build upon the material in any medium or format for noncommercial purposes only, and only so long as attribution is given to the creator. If you remix, adapt, or build upon the material, you must license the modified material under identical terms. CC BY-NC-SA includes the following elements:
 
 <p align="center"><img alt="by img" src="https://mirrors.creativecommons.org/presskit/icons/by.png"/> <img alt="nc img" src="https://mirrors.creativecommons.org/presskit/icons/nc.png"/> <img alt="sa img" src="https://mirrors.creativecommons.org/presskit/icons/sa.png"/></p>
 
@@ -135,7 +135,7 @@ About our team:
 
 - **Nicolás** Cabrera Domínguez- [GitHub · Profile](https://github.com/jncabdom)
 
-- **Paula** Pérez Tafalla -  [GitHub · Profile](https://github.com/paolaski) - [Paolaski.es · Website](https://www.paolaski.es/)
+- **Paula** Pérez Tafalla - [GitHub · Profile](https://github.com/paolaski) - [Paolaski.es · Website](https://www.paolaski.es/)
 
 - **Néstor** Torres Diaz - [GitHub · Profile](https://github.com/dtote)
 

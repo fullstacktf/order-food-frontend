@@ -12,6 +12,10 @@ build: --check
 	@echo "🏗️ Building..."
 	@yarn build
 
+clean:
+	@echo "🧼 Cleaning!"
+	@yarn clean
+
 --check:
 	@yarn clean
 	@yarn install
