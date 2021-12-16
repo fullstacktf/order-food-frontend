@@ -56,7 +56,7 @@ const Selector = styled(Select)`
 const leftColumn: FormColumnData[] = [
   { name: 'email', type: 'text' },
   { name: 'name', type: 'text' },
-  { name: 'hashedPassword', type: 'password' },
+  { name: 'password', type: 'password' },
   { name: 'phone', type: 'number' },
 ]
 
