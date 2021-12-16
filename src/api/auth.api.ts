@@ -8,7 +8,7 @@ interface BackUser {
 	"role"           :string,
 	"name"           :string,
 	"email"          :string,
-	"hashedPassword" :string,
+	"password" :string,
 	"phone"          :number,
   "address"        :Address[],
 }
@@ -18,7 +18,7 @@ const toBackUser = (user: User) => {
 	"role"           :user.role,
 	"name"           :user.name,
 	"email"          :user.email,
-	"hashedPassword" :user.hashedPassword,
+	"password" :user.password,
 	"phone"          :user.phone,
     "address": [
       user.street,
@@ -32,7 +32,7 @@ const toBackUser = (user: User) => {
 
 export interface LoginUser {
   "email"          :string,
-	"hashedPassword" :string,
+	"password" :string,
 }
 
 interface Address {
