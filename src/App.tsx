@@ -1,6 +1,6 @@
 import React from 'react'
 import { Routes } from 'react-router'
-import { BrowserRouter, Link, Route } from 'react-router-dom'
+import { BrowserRouter, Route } from 'react-router-dom'
 import { OrderSummary } from './pages/OrderSummary/OrderSummary'
 import { Home } from './pages/Home/Home'
 import { Navbar } from './components/Navbar/Navbar'
