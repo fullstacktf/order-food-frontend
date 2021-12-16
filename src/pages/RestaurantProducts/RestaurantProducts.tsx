@@ -1,0 +1,83 @@
+import styled from '@emotion/styled'
+import AddIcon from '@mui/icons-material/Add'
+import Avatar from '@mui/material/Avatar'
+import React from 'react'
+import { Button } from '../../components/Button/Button'
+import { Title } from '../../components/Title/Title'
+import { ProductInfo } from '../RestaurantDetails/models/ProductInfo.model'
+import { Product } from './components/Product/Product'
+
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  width: 100vw;
+`
+
+const ProductsContainer = styled(Container)`
+  justify-content: flex-start;
+  padding: 20px;
+`
+const AddProductContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+const Header = styled.div``
+
+const products: ProductInfo[] = [
+  {
+    category: 'mainCourse',
+    name: 'Bocadillo Clásico Embutidos',
+    price: 1.4,
+  },
+  {
+    category: 'mainCourse',
+    name: 'Perrito Especial Mexicano',
+    price: 3.0,
+  },
+  {
+    category: 'appetizer',
+    name: 'Ensaladilla',
+    price: 42342.2,
+  },
+  {
+    category: 'appetizer',
+    name: 'Bolitas de coco',
+    price: 4.2,
+  },
+]
+
+export const RestaurantProducts = () => {
+  // this handler and the handlers inside product should call services to insert, modify or delete product
+  const addItemHandler = () => console.log('si')
+
+  return (
+    <Container>
+      <Avatar
+        sx={{ width: 68, height: 68 }}
+        alt="Comiditapp Restaurant"
+        src="https://images.vexels.com/media/users/3/143047/isolated/preview/b0c9678466af11dd45a62163bdcf03fe-icono-plano-de-hamburguesa-de-comida-rapida.png"
+      ></Avatar>
+      <Header>
+        <Title name="Calle el hambre Products"></Title>
+        <AddProductContainer>
+          <Button
+            onClickHandler={addItemHandler}
+            theme="black"
+            icon={<AddIcon />}
+          ></Button>
+          <span>Add new product</span>
+        </AddProductContainer>
+        <ProductsContainer>
+          {products.map((p) => (
+            <Product {...p}></Product>
+          ))}
+        </ProductsContainer>
+      </Header>
+    </Container>
+  )
+}
