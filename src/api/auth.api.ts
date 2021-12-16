@@ -8,25 +8,25 @@ interface BackUser {
 	"role"           :string,
 	"name"           :string,
 	"email"          :string,
-	"password" :string,
+	"password"       :string,
 	"phone"          :number,
   "address"        :Address[],
 }
 
-const toBackUser = (user: User) => {
+const toBackUser = (user: User): BackUser => {
   return {
-	"role"           :user.role,
-	"name"           :user.name,
-	"email"          :user.email,
-	"password" :user.password,
-	"phone"          :user.phone,
-    "address": [
-      user.street,
-      user.streetNumber,
-      user.country,
-      user.postalCode,
-      user.city
-  ],
+	"role"            :user.role,
+	"name"            :user.name,
+	"email"           :user.email,
+	"password"        :user.password,
+	"phone"           :+user.phone,
+    "address": [{
+      "street"      :user.street,
+      "streetNumber":user.streetNumber,
+      "country"     :user.country,
+      "zipCode"  :+user.zipCode,
+      "city"        :user.city
+    }],
   }
 }
 
@@ -39,11 +39,12 @@ interface Address {
   "street": string
   "streetNumber": number
   "country": string
-  "postalCode": number
+  "zipCode": number
   "city": string
 }
 
 export const signUp = (newUser: User) => {
+  console.log(toBackUser(newUser))
   axios.post(`${BASE_URL}auth/signup`, toBackUser(newUser))
     .then((response) => console.log(response))
 }

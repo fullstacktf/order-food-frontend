@@ -65,7 +65,7 @@ export const RestaurantDetails = () => {
           city="La Laguna"
           country="España"
           street="Calle El Hambre"
-          postalCode={38204}
+          zipCode={38204}
           streetNumber={12}
         ></AddressDetails>
         <ProductsContainer>

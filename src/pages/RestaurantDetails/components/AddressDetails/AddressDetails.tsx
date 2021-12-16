@@ -4,7 +4,7 @@ import React, { FC } from 'react'
 interface AddressDetailsProps {
   street: string
   country: string
-  postalCode: number
+  zipCode: number
   city: string
   streetNumber: number
 }
@@ -16,7 +16,7 @@ const AddressContainer = styled.div`
 export const AddressDetails: FC<AddressDetailsProps> = ({
   street,
   country,
-  postalCode,
+  zipCode,
   city,
   streetNumber,
 }) => {
@@ -28,7 +28,7 @@ export const AddressDetails: FC<AddressDetailsProps> = ({
         .concat(', ')
         .concat(city)
         .concat(', ')
-        .concat(postalCode.toString())
+        .concat(zipCode.toString())
         .concat(` (${country})`)}
     </AddressContainer>
   )

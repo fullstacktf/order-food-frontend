@@ -65,7 +65,7 @@ const rightColumn: FormColumnData[] = [
   { name: 'streetNumber', type: 'text' },
   { name: 'city', type: 'text' },
   { name: 'country', type: 'text' },
-  { name: 'postalCode', type: 'number' },
+  { name: 'zipCode', type: 'number' },
 ]
 
 export const Register = () => {

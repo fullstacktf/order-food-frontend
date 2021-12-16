@@ -17,6 +17,6 @@ export const registerResolver = yupResolver(yup
     streetNumber: yup.string().required('Street Number is a required field'),
     city: yup.string().required('City is a required field'),
     country: yup.string().required('Country is a required field'),
-    postalCode: yup.string().required('Postal Code is a required field'),
+    zipCode: yup.string().required('Postal Code is a required field'),
   })
   .required())
