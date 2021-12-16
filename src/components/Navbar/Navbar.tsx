@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { NavbarItem } from '../NavbarItem/NavbarItem'
+import { NavbarItem } from './NavbarItem/NavbarItem'
 
 const Container = styled.div`
   display: flex;

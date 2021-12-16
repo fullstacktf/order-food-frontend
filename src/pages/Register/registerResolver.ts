@@ -13,12 +13,10 @@ export const registerResolver = yupResolver(yup
         RegExp(/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{3})$/),
         'Invalid phone number'
     ),
-    address: yup.array().of(yup.object().shape({
-      street: yup.string().required('Street is a required field'),
-      streetNumber: yup.string().required('Street Number is a required field'),
-      city: yup.string().required('City is a required field'),
-      country: yup.string().required('Country is a required field'),
-      postalCode: yup.string().required('Postal Code is a required field'),
-    }))
+    street: yup.string().required('Street is a required field'),
+    streetNumber: yup.string().required('Street Number is a required field'),
+    city: yup.string().required('City is a required field'),
+    country: yup.string().required('Country is a required field'),
+    postalCode: yup.string().required('Postal Code is a required field'),
   })
   .required())

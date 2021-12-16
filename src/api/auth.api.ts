@@ -2,7 +2,9 @@ import axios from "axios";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "api.comidit.app"
 
-export interface User {
+export type User = Omit<BackUser, "address"> & Address;
+
+interface BackUser {
 	"role"           :string,
 	"name"           :string,
 	"email"          :string,
@@ -11,12 +13,29 @@ export interface User {
   "address"        :Address[],
 }
 
+const toBackUser = (user: User) => {
+  return {
+	"role"           :user.role,
+	"name"           :user.name,
+	"email"          :user.email,
+	"hashedPassword" :user.hashedPassword,
+	"phone"          :user.phone,
+    "address": [
+      user.street,
+      user.streetNumber,
+      user.country,
+      user.postalCode,
+      user.city
+  ],
+  }
+}
+
 export interface LoginUser {
   "email"          :string,
 	"hashedPassword" :string,
 }
 
-export interface Address {
+interface Address {
   "street": string
   "streetNumber": number
   "country": string
@@ -25,7 +44,7 @@ export interface Address {
 }
 
 export const signUp = (newUser: User) => {
-  axios.post(`${BASE_URL}auth/signup`, newUser)
+  axios.post(`${BASE_URL}auth/signup`, toBackUser(newUser))
     .then((response) => console.log(response))
 }
 
