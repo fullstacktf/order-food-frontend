@@ -19,7 +19,7 @@ const MainApp = styled.div`
 
 const LOGGEDIN = true
 const App = () => {
-  if (LOGGEDIN)
+  if (!LOGGEDIN)
     return (
       <MainApp>
         <BrowserRouter>
