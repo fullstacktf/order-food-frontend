@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import React, { FC } from 'react'
 import { TextField } from '@mui/material'
-import { capitalize } from '../../utils/capitalize'
+import { capitalize } from '../../utils/strings/capitalize'
 
 const StyledField = styled(TextField)`
   width: 100%;
@@ -13,24 +13,17 @@ interface formInput {
   register: any
   name: string
   type: string
-  registerPrefix?: string
 }
 
-export const FormInput: FC<formInput> = ({
-  errors,
-  register,
-  name,
-  type,
-  registerPrefix = '',
-}) => {
+export const FormInput: FC<formInput> = ({ errors, register, name, type }) => {
   return (
     <StyledField
-      error={errors[name]}
+      error={errors[name] !== undefined}
       helperText={errors[name]?.message}
       label={capitalize(name)}
       type={type}
       variant="outlined"
-      {...register(registerPrefix + name)}
+      {...register(name)}
     />
   )
 }

@@ -17,21 +17,35 @@ const MainApp = styled.div`
   margin: 0;
 `
 
-const App = () => (
-  <MainApp>
-    <BrowserRouter>
-      <Navbar></Navbar>
-      <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/register" element={<Register />}></Route>
-        <Route path="/login" element={<Login />}></Route>
-        <Route path="/restaurant" element={<RestaurantDetails />}></Route>
-        <Route path="/products" element={<RestaurantProducts />}></Route>
-        <Route path="/summary" element={<OrderSummary />}></Route>
-        <Route path="*" element={<Error404 />}></Route>
-      </Routes>
-    </BrowserRouter>
-  </MainApp>
-)
+const LOGGEDIN = true
+const App = () => {
+  if (LOGGEDIN)
+    return (
+      <MainApp>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />}></Route>
+            <Route path="/register" element={<Register />}></Route>
+            <Route path="/login" element={<Login />}></Route>
+          </Routes>
+        </BrowserRouter>
+      </MainApp>
+    )
+  else
+    return (
+      <MainApp>
+        <BrowserRouter>
+          <Navbar></Navbar>
+          <Routes>
+            <Route path="/"></Route>
+            <Route path="/restaurant" element={<RestaurantDetails />}></Route>
+            <Route path="/products" element={<RestaurantProducts />}></Route>
+            <Route path="/summary" element={<OrderSummary />}></Route>
+            <Route path="*" element={<Error404 />}></Route>
+          </Routes>
+        </BrowserRouter>
+      </MainApp>
+    )
+}
 
 export default App

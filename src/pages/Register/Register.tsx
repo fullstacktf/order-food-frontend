@@ -3,7 +3,7 @@ import { InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { signUp, User } from '../../api/auth.api'
-import { registerResolver } from '../../services/yupResolvers/registerResolver'
+import { registerResolver } from './registerResolver'
 import { FormInput } from '../../components/FormInput/FormInput'
 
 interface FormColumnData {
@@ -56,7 +56,7 @@ const Selector = styled(Select)`
 const leftColumn: FormColumnData[] = [
   { name: 'email', type: 'text' },
   { name: 'name', type: 'text' },
-  { name: 'hashedPassword', type: 'password' },
+  { name: 'password', type: 'password' },
   { name: 'phone', type: 'number' },
 ]
 
@@ -65,7 +65,7 @@ const rightColumn: FormColumnData[] = [
   { name: 'streetNumber', type: 'text' },
   { name: 'city', type: 'text' },
   { name: 'country', type: 'text' },
-  { name: 'postalCode', type: 'number' },
+  { name: 'zipCode', type: 'number' },
 ]
 
 export const Register = () => {
@@ -81,12 +81,10 @@ export const Register = () => {
   })
 
   const onSubmit = (data: User) => {
-    const newUser: User = { ...data }
-    signUp(newUser)
+    signUp(data)
   }
 
   const handleOnChange = (event: SelectChangeEvent<unknown>) => {
-    console.log(errors)
     const value = event.target.value as string
     setRole(value)
     setValue('role', role)
@@ -124,7 +122,6 @@ export const Register = () => {
                   name={value.name}
                   errors={errors}
                   register={register}
-                  registerPrefix={'address.0.'}
                   key={i}
                 />
               )

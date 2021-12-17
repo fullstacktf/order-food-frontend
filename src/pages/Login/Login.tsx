@@ -57,7 +57,7 @@ export const Login = () => {
         />
         <FormInput
           type="password"
-          name="hashedPassword"
+          name="password"
           errors={errors}
           register={register}
         />
