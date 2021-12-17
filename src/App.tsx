@@ -1,16 +1,16 @@
+import styled from '@emotion/styled'
 import React from 'react'
 import { Routes } from 'react-router'
 import { BrowserRouter, Route } from 'react-router-dom'
-import { OrderSummary } from './pages/OrderSummary/OrderSummary'
-import { Home } from './pages/Home/Home'
+import { Navbar } from './components/Navbar/Navbar'
+import './index.css'
 import { Error404 } from './pages/Error404'
+import { Home } from './pages/Home/Home'
+import { Login } from './pages/Login/Login'
+import { OrderSummary } from './pages/OrderSummary/OrderSummary'
 import { Register } from './pages/Register/Register'
 import { RestaurantDetails } from './pages/RestaurantDetails/RestaurantDetails'
-import { Login } from './pages/Login/Login'
-import { Navbar } from './components/Navbar/Navbar'
-import styled from '@emotion/styled'
-
-import './index.css'
+import { RestaurantProducts } from './pages/RestaurantProducts/RestaurantProducts'
 
 const MainApp = styled.div`
   display: flex;
@@ -19,7 +19,7 @@ const MainApp = styled.div`
 
 const LOGGEDIN = true
 const App = () => {
-  if (LOGGEDIN)
+  if (!LOGGEDIN)
     return (
       <MainApp>
         <BrowserRouter>
@@ -39,6 +39,7 @@ const App = () => {
           <Routes>
             <Route path="/"></Route>
             <Route path="/restaurant" element={<RestaurantDetails />}></Route>
+            <Route path="/products" element={<RestaurantProducts />}></Route>
             <Route path="/summary" element={<OrderSummary />}></Route>
             <Route path="*" element={<Error404 />}></Route>
           </Routes>
