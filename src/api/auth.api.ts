@@ -57,7 +57,3 @@ export const signIn = (user: LoginUser) => {
     .post(`${BASE_URL}auth/signin`, user)
     .then((response) => console.log(response))
 }
-
-export const getRestaurants = () => {
-  axios.get(`${BASE_URL}restaurants`).then((response) => console.log(response))
-}

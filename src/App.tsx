@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import React from 'react'
-import { Routes } from 'react-router'
+import { Navigate, Routes } from 'react-router'
 import { BrowserRouter, Route } from 'react-router-dom'
 import { Navbar } from './components/Navbar/Navbar'
 import './index.css'
@@ -39,6 +39,7 @@ const App = () => {
         <BrowserRouter>
           <Navbar></Navbar>
           <Routes>
+            <Route path="/" element={<Navigate to="/restaurants" />}></Route>
             <Route
               path="/restaurants"
               element={<AllRestaurantsDetails />}
