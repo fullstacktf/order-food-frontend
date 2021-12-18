@@ -3,10 +3,13 @@ import Avatar from '@mui/material/Avatar'
 import Rating from '@mui/material/Rating'
 import Typography from '@mui/material/Typography'
 import React from 'react'
-import { AddressDetails } from './components/AddressDetails/AddressDetails'
-import { ProductInfo } from './models/ProductInfo.model'
-import { Product } from './components/Product/Product'
+import { useQuery } from 'react-query'
+import { useParams } from 'react-router-dom'
+import { BASE_URL } from '../../api/auth.api'
 import { Title } from '../../components/Title/Title'
+import { AddressDetails } from './components/AddressDetails/AddressDetails'
+import { Product } from './components/Product/Product'
+import { ProductInfo } from './models/ProductInfo.model'
 
 const Container = styled.div`
   display: flex;
@@ -48,32 +51,42 @@ const products: ProductInfo[] = [
 ]
 
 export const RestaurantDetails = () => {
-  return (
-    <Container>
-      <Avatar
-        sx={{ width: 68, height: 68 }}
-        alt="Comiditapp Restaurant"
-        src="https://images.vexels.com/media/users/3/143047/isolated/preview/b0c9678466af11dd45a62163bdcf03fe-icono-plano-de-hamburguesa-de-comida-rapida.png"
-      ></Avatar>
-      <Header>
-        <Title name="Calle el hambre"></Title>
-        <Container>
-          <Rating name="customized-5" defaultValue={2} max={5} />
-          <Typography component="legend">(126 opinions)</Typography>
-        </Container>
-        <AddressDetails
-          city="La Laguna"
-          country="España"
-          street="Calle El Hambre"
-          zipCode={38204}
-          streetNumber={12}
-        ></AddressDetails>
-        <ProductsContainer>
-          {products.map((p) => (
-            <Product {...p}></Product>
-          ))}
-        </ProductsContainer>
-      </Header>
-    </Container>
-  )
+  const { id } = useParams()
+
+  const { isLoading, error, data } = useQuery(`restaurants/${id}`, () => {
+    fetch(`${BASE_URL}restaurants/${id}`).then((res) => res.json())
+  })
+
+  if (isLoading) return <div>Loading!</div>
+  else if (error) return <div>Error!</div>
+  else
+    return (
+      <Container>
+        <Avatar
+          sx={{ width: 68, height: 68 }}
+          alt="Comiditapp Restaurant"
+          src="https://images.vexels.com/media/users/3/143047/isolated/preview/b0c9678466af11dd45a62163bdcf03fe-icono-plano-de-hamburguesa-de-comida-rapida.png"
+        ></Avatar>
+        <Header>
+          <Title name="Calle el hambre"></Title>
+          <Container>
+            {console.log('vainitas', data)}
+            <Rating name="customized-5" defaultValue={2} max={5} />
+            <Typography component="legend">(126 opinions)</Typography>
+          </Container>
+          <AddressDetails
+            city="La Laguna"
+            country="España"
+            street="Calle El Hambre"
+            zipCode={38204}
+            streetNumber={12}
+          ></AddressDetails>
+          <ProductsContainer>
+            {products.map((p) => (
+              <Product key={p.name} {...p}></Product>
+            ))}
+          </ProductsContainer>
+        </Header>
+      </Container>
+    )
 }
