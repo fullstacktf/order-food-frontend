@@ -1,15 +1,23 @@
 import styled from '@emotion/styled'
 import FastfoodIcon from '@mui/icons-material/Fastfood'
+import LogoutIcon from '@mui/icons-material/Logout'
+import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import { Item } from './NavbarItem/Item'
-import { NavbarItem } from './NavbarItem/NavbarItem'
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  justify-content: space-around;
   height: 100vh;
-  width: 80px;
+`
+
+const NavbarContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 90vh;
+  justify-content: space-around;
   box-shadow: 2px 2px 8px black;
   z-index: 1;
   border-bottom-right-radius: 15px;
@@ -20,15 +28,11 @@ const Container = styled.div`
 export const Navbar = () => {
   return (
     <Container>
-      <FastfoodIcon />
-      <Item to="/restaurants" icon={<FastfoodIcon />}></Item>
-      <NavbarItem icon="./assets/home.svg" to="/"></NavbarItem>
-      <NavbarItem icon="./assets/home.svg" to="/"></NavbarItem>
-      <NavbarItem icon="./assets/home.svg" to="/"></NavbarItem>
-      <NavbarItem icon="./assets/home.svg" to="/"></NavbarItem>
-      <NavbarItem icon="./assets/home.svg" to="/"></NavbarItem>
-      <NavbarItem icon="./assets/home.svg" to="/"></NavbarItem>
-      <NavbarItem icon="./assets/home.svg" to="/"></NavbarItem>
+      <NavbarContainer>
+        <Item to="/restaurants" icon={<FastfoodIcon />}></Item>
+        <Item to="/profile" icon={<AccountCircleIcon />}></Item>
+        <Item to="/logout" icon={<LogoutIcon />}></Item>
+      </NavbarContainer>
     </Container>
   )
 }

@@ -19,6 +19,22 @@ const MainApp = styled.div`
   background: linear-gradient(130deg, #cccccc 66%, #16202c 30%);
 `
 
+const DefaultRoutes = [
+  { path: '/', element: Home },
+  { path: '/register', element: Register },
+  { path: '/login', element: Login },
+  { path: '*', element: Home },
+]
+
+const LoggedRoutes = [
+  { path: '/restaurants', element: AllRestaurantsDetails },
+  { path: '/restaurant', element: RestaurantDetails },
+  { path: '/products', element: RestaurantProducts },
+  { path: '/summary', element: OrderSummary },
+  { path: '/restaurants/:id', element: RestaurantDetails },
+  { path: '*', element: Error404 },
+]
+
 const LOGGEDIN = true
 const App = () => {
   if (!LOGGEDIN)
@@ -26,9 +42,12 @@ const App = () => {
       <MainApp>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Home />}></Route>
-            <Route path="/register" element={<Register />}></Route>
-            <Route path="/login" element={<Login />}></Route>
+            {DefaultRoutes.map((route) => (
+              <Route
+                path={route.path}
+                element={React.createElement(route.element)}
+              ></Route>
+            ))}
           </Routes>
         </BrowserRouter>
       </MainApp>
@@ -40,18 +59,12 @@ const App = () => {
           <Navbar></Navbar>
           <Routes>
             <Route path="/" element={<Navigate to="/restaurants" />}></Route>
-            <Route
-              path="/restaurants"
-              element={<AllRestaurantsDetails />}
-            ></Route>
-            <Route path="/restaurant" element={<RestaurantDetails />}></Route>
-            <Route path="/products" element={<RestaurantProducts />}></Route>
-            <Route path="/summary" element={<OrderSummary />}></Route>
-            <Route
-              path="/restaurants/:id"
-              element={<RestaurantDetails />}
-            ></Route>
-            <Route path="*" element={<Error404 />}></Route>
+            {LoggedRoutes.map((route) => (
+              <Route
+                path={route.path}
+                element={React.createElement(route.element)}
+              ></Route>
+            ))}
           </Routes>
         </BrowserRouter>
       </MainApp>
