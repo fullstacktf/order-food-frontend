@@ -3,8 +3,8 @@ import { InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { signUp, User } from '../../api/auth.api'
-import { registerResolver } from './registerResolver'
 import { FormInput } from '../../components/FormInput/FormInput'
+import { registerResolver } from './registerResolver'
 
 interface FormColumnData {
   name: string
@@ -99,7 +99,7 @@ export const Register = () => {
           <Column>
             <InputLabel>Role</InputLabel>
             <Selector value={role} label="Role" onChange={handleOnChange}>
-              <MenuItem value={'user'}>user</MenuItem>
+              <MenuItem value={'client'}>client</MenuItem>
               <MenuItem value={'restaurant'}>restaurant</MenuItem>
             </Selector>
             {leftColumn.map(function (value, i) {
