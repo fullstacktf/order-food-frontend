@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { useQuery } from 'react-query'
-import { BASE_URL, toProfileUser, updateUser, User } from '../../api/auth.api'
+import { BASE_URL, toProfileUser, User } from '../../api/auth.api'
 import { FormInput } from '../../components/FormInput/FormInput'
 import { profileResolver } from './ProfileResolver'
 
