@@ -22,7 +22,7 @@ const Container = styled.div`
 
 const ProductsContainer = styled(Container)`
   justify-content: flex-start;
-  padding: 20px;
+  padding-top: 20px;
 `
 
 const Header = styled.div``

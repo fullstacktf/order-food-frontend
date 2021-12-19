@@ -87,7 +87,7 @@ export const Product: FC<ProductProps> = ({
       <ProductData>
         <DataItem>{name}</DataItem>
         <DataItem>
-          <strong> {category}</strong>s
+          <strong> {category}</strong>
         </DataItem>
       </ProductData>
       <ProductData>
