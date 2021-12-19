@@ -38,7 +38,6 @@ export const toProfileUser = (user: BackUser): ProfileUser => {
   return {
     name: user.name,
     email: user.email,
-    password: user.password,
     phone: +user.phone,
     street: user.address[0].street,
     country: user.address[0].country,
@@ -69,6 +68,7 @@ export const signUp = (newUser: User) => {
 
 export const updateUser = (user: User, pass: string) => {
   const reqData = { ...toBackUser(user), pass: pass }
+  if(reqData.password === '') reqData.password = pass
   return axios
     .put(`${BASE_URL}profile/61be554065a7a1da79d0a9ea`, reqData)
     .then((response) => response)

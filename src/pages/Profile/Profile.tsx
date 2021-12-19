@@ -5,7 +5,7 @@ import { useQuery } from 'react-query'
 import { BASE_URL, toProfileUser, User } from '../../api/auth.api'
 import { Button } from '../../components/Button/Button'
 import { FormInput } from '../../components/FormInput/FormInput'
-import { FormDialog } from './components/DialogButton'
+import { FormDialog } from './components/FormDialog'
 import { profileResolver } from './ProfileResolver'
 
 interface FormColumnData {
@@ -16,7 +16,7 @@ interface FormColumnData {
 const leftColumn: FormColumnData[] = [
   { name: 'email', type: 'text' },
   { name: 'name', type: 'text' },
-  { name: 'password', type: 'password' },
+  { name: 'new password', type: 'password' },
   { name: 'phone', type: 'number' },
 ]
 
@@ -65,18 +65,6 @@ const Columns = styled.div`
 // TODO Sustituir por id del cliente logueado
 export const Profile = () => {
   const [open, setOpen] = useState(false)
-
-  const HandleClick = (data: User) => {
-    setOpen(false)
-    //const result = updateUser(data)
-    //if(result.codigo = 200 tal)
-  }
-
-  const { isLoading, error, data } = useQuery('profile', () =>
-    fetch(`${BASE_URL}clients/61bf30021081b8ba22e7a78f`).then((res) =>
-      res.json()
-    )
-  )
   const {
     register,
     handleSubmit,
@@ -84,23 +72,35 @@ export const Profile = () => {
   } = useForm({
     resolver: profileResolver,
   })
+  const { isLoading, error, data } = useQuery('profile', () =>
+    fetch(`${BASE_URL}clients/61bf30021081b8ba22e7a78f`).then((res) =>
+      res.json()
+    )
+  )
+
+  const HandleClick = (data: User & { pass: string }) => {
+    if (data.pass !== '') {
+      setOpen(false)
+      //const result = updateUser(data, data.pass)
+      // store response data into localStorage (new user Data)
+      //if(result.codigo = 200 tal)
+    }
+  }
 
   const dialog = {
     name: 'pass',
     buttonText: 'Update Profile',
     title: 'We need your password',
-    text: 'Insert your password in order to update your profile',
+    text: `Insert your current password so we can verify it's you`,
     input: {
       label: 'Password',
       type: 'password',
     },
     register: register,
   }
-
   if (error) return <div>"Error"</div>
   else if (!isLoading) {
     const profile = toProfileUser(data)
-    profile.password = 'pass de ejemplo'
     return (
       <Container>
         <InnerContainer>
