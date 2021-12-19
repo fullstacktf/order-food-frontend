@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const BASE_URL = process.env.REACT_APP_BASE_URL || 'api.comidit.app/'
+export const BASE_URL = process.env.REACT_APP_BASE_URL || 'https://api.comidit.app/'
 
 export type User = Omit<BackUser, 'address'> & Address
 
