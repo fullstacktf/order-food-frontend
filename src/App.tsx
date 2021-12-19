@@ -8,6 +8,7 @@ import { AllRestaurantsDetails } from './pages/AllRestaurantsDetails/AllRestaura
 import { Error404 } from './pages/Error404'
 import { Home } from './pages/Home/Home'
 import { Login } from './pages/Login/Login'
+import { Logout } from './components/Logout/Logout'
 import { OrderSummary } from './pages/OrderSummary/OrderSummary'
 import { Profile } from './pages/Profile/Profile'
 import { Register } from './pages/Register/Register'
@@ -34,13 +35,12 @@ const LoggedRoutes = [
   { path: '/summary', element: OrderSummary },
   { path: '/restaurants/:id', element: RestaurantDetails },
   { path: '/profile', element: Profile },
+  { path: '/logout', element: Logout },
   { path: '*', element: Error404 },
 ]
 
-// Should check localstorage? Depends on backend login
-const LOGGEDIN = true
 const App = () => {
-  if (!LOGGEDIN)
+  if (!localStorage.getItem('token'))
     return (
       <MainApp>
         <BrowserRouter>

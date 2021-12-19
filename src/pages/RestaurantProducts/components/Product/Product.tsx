@@ -45,8 +45,8 @@ export const Product: FC<ProductProps> = ({
   price,
   image = IMAGE_URL,
 }) => {
-  const modifyItemHandler = () => console.log('si')
-  const deleteItemHandler = () => console.log('si')
+  const deleteItemHandler = () => {}
+  const modifyItemHandler = () => {}
 
   return (
     <ProductContainer>

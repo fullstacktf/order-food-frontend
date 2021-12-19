@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import { InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { signUp, User } from '../../api/auth.api'
+import { registerUser, User } from '../../api/auth.api'
 import { FormInput } from '../../components/FormInput/FormInput'
 import { registerResolver } from './registerResolver'
 
@@ -69,7 +69,7 @@ const rightColumn: FormColumnData[] = [
 ]
 
 export const Register = () => {
-  const [role, setRole] = useState('user')
+  const [role, setRole] = useState('client')
 
   const {
     register,
@@ -83,8 +83,10 @@ export const Register = () => {
   // Careful with this! We probably should split data before
   // storing it... Depends on the back response
   const onSubmit = (data: User) => {
-    const response = signUp(data)
-    localStorage.setItem('userData', JSON.stringify(response))
+    registerUser(data).then(({ data }) => {
+      localStorage.setItem('user', JSON.stringify(data.user))
+      localStorage.setItem('token', data.token)
+    })
   }
 
   const handleOnChange = (event: SelectChangeEvent<unknown>) => {

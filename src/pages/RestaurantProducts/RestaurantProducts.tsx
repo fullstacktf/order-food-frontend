@@ -53,7 +53,7 @@ const products: ProductInfo[] = [
 
 export const RestaurantProducts = () => {
   // this handler and the handlers inside product should call services to insert, modify or delete product
-  const addItemHandler = () => console.log('si')
+  const addItemHandler = () => {}
 
   return (
     <Container>
