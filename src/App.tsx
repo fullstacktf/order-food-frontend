@@ -18,7 +18,6 @@ import { RestaurantProducts } from './pages/RestaurantProducts/RestaurantProduct
 const MainApp = styled.div`
   display: flex;
   margin: 0;
-  background: linear-gradient(130deg, #cccccc 66%, #16202c 30%);
 `
 
 const DefaultRoutes = [
