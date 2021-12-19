@@ -56,6 +56,7 @@ export const RestaurantDetails = () => {
   const { isLoading, error, data } = useQuery(`restaurants/${id}`, () => {
     fetch(`${BASE_URL}restaurants/${id}`).then((res) => res.json())
   })
+  console.log(data)
 
   if (isLoading) return <div>Loading!</div>
   else if (error) return <div>Error!</div>
@@ -70,7 +71,6 @@ export const RestaurantDetails = () => {
         <Header>
           <Title name="Calle el hambre"></Title>
           <Container>
-            {console.log('vainitas', data)}
             <Rating name="customized-5" defaultValue={2} max={5} />
             <Typography component="legend">(126 opinions)</Typography>
           </Container>
