@@ -8,6 +8,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   height: 100vh;
+  width: 100%;
 `
 
 const Image404 = styled.img`

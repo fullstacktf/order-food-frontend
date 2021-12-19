@@ -9,6 +9,7 @@ import { Error404 } from './pages/Error404'
 import { Home } from './pages/Home/Home'
 import { Login } from './pages/Login/Login'
 import { OrderSummary } from './pages/OrderSummary/OrderSummary'
+import { Profile } from './pages/Profile/Profile'
 import { Register } from './pages/Register/Register'
 import { RestaurantDetails } from './pages/RestaurantDetails/RestaurantDetails'
 import { RestaurantProducts } from './pages/RestaurantProducts/RestaurantProducts'
@@ -19,6 +20,24 @@ const MainApp = styled.div`
   background: linear-gradient(130deg, #cccccc 66%, #16202c 30%);
 `
 
+const DefaultRoutes = [
+  { path: '/', element: Home },
+  { path: '/register', element: Register },
+  { path: '/login', element: Login },
+  { path: '*', element: Home },
+]
+
+const LoggedRoutes = [
+  { path: '/restaurants', element: AllRestaurantsDetails },
+  { path: '/restaurant', element: RestaurantDetails },
+  { path: '/products', element: RestaurantProducts },
+  { path: '/summary', element: OrderSummary },
+  { path: '/restaurants/:id', element: RestaurantDetails },
+  { path: '/profile', element: Profile },
+  { path: '*', element: Error404 },
+]
+
+// Should check localstorage? Depends on backend login
 const LOGGEDIN = true
 const App = () => {
   if (!LOGGEDIN)
@@ -26,9 +45,13 @@ const App = () => {
       <MainApp>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Home />}></Route>
-            <Route path="/register" element={<Register />}></Route>
-            <Route path="/login" element={<Login />}></Route>
+            {DefaultRoutes.map((route, i) => (
+              <Route
+                key={i}
+                path={route.path}
+                element={React.createElement(route.element)}
+              ></Route>
+            ))}
           </Routes>
         </BrowserRouter>
       </MainApp>
@@ -40,18 +63,13 @@ const App = () => {
           <Navbar></Navbar>
           <Routes>
             <Route path="/" element={<Navigate to="/restaurants" />}></Route>
-            <Route
-              path="/restaurants"
-              element={<AllRestaurantsDetails />}
-            ></Route>
-            <Route path="/restaurant" element={<RestaurantDetails />}></Route>
-            <Route path="/products" element={<RestaurantProducts />}></Route>
-            <Route path="/summary" element={<OrderSummary />}></Route>
-            <Route
-              path="/restaurants/:id"
-              element={<RestaurantDetails />}
-            ></Route>
-            <Route path="*" element={<Error404 />}></Route>
+            {LoggedRoutes.map((route, i) => (
+              <Route
+                path={route.path}
+                key={i}
+                element={React.createElement(route.element)}
+              ></Route>
+            ))}
           </Routes>
         </BrowserRouter>
       </MainApp>

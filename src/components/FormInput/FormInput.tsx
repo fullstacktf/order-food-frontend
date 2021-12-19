@@ -13,17 +13,37 @@ interface formInput {
   register: any
   name: string
   type: string
+  initialValue?: string | number
 }
 
-export const FormInput: FC<formInput> = ({ errors, register, name, type }) => {
-  return (
-    <StyledField
-      error={errors[name] !== undefined}
-      helperText={errors[name]?.message}
-      label={capitalize(name)}
-      type={type}
-      variant="outlined"
-      {...register(name)}
-    />
-  )
+export const FormInput: FC<formInput> = ({
+  errors,
+  register,
+  name,
+  type,
+  initialValue,
+}) => {
+  if (initialValue === '')
+    return (
+      <StyledField
+        error={errors[name] !== undefined}
+        helperText={errors[name]?.message}
+        label={capitalize(name)}
+        type={type}
+        variant="outlined"
+        {...register(name)}
+      />
+    )
+  else
+    return (
+      <StyledField
+        error={errors[name] !== undefined}
+        helperText={errors[name]?.message}
+        label={capitalize(name)}
+        type={type}
+        variant="outlined"
+        defaultValue={initialValue}
+        {...register(name)}
+      />
+    )
 }

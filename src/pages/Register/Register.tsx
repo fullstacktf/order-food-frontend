@@ -80,8 +80,11 @@ export const Register = () => {
     resolver: registerResolver,
   })
 
+  // Careful with this! We probably should split data before
+  // storing it... Depends on the back response
   const onSubmit = (data: User) => {
-    signUp(data)
+    const response = signUp(data)
+    localStorage.setItem('userData', JSON.stringify(response))
   }
 
   const handleOnChange = (event: SelectChangeEvent<unknown>) => {
