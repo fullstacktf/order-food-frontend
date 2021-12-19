@@ -83,10 +83,7 @@ export const Register = () => {
   // Careful with this! We probably should split data before
   // storing it... Depends on the back response
   const onSubmit = (data: User) => {
-    registerUser(data).then(({ data }) => {
-      localStorage.setItem('user', JSON.stringify(data.user))
-      localStorage.setItem('token', data.token)
-    })
+    registerUser(data)
   }
 
   const handleOnChange = (event: SelectChangeEvent<unknown>) => {

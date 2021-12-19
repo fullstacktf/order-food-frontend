@@ -80,9 +80,7 @@ export const Profile = () => {
   const HandleClick = (data: User & { pass: string }) => {
     if (data.pass !== '') {
       setOpen(false)
-      updateUser(data, data.pass, userId).then((data) => console.log(data))
-      // store response data into localStorage (new user Data)
-      //if(result.codigo = 200 tal)
+      updateUser(data, data.pass, userId)
     }
   }
 

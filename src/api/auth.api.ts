@@ -63,20 +63,29 @@ export const registerUser = (newUser: User) => {
   return axios
     .post(`${BASE_URL}auth/register`, toBackUser(newUser))
     .then((response) => response)
+    .then(({ data }) => {
+      localStorage.setItem('user', JSON.stringify(data.user))
+      localStorage.setItem('token', data.token)
+    })
 }
 
 export const loginUser = (user: LoginUser) => {
   return axios
     .post(`${BASE_URL}auth/login`, user)
     .then((response) => response)
+    .then(({ data }) => {
+      localStorage.setItem('user', JSON.stringify(data.user))
+      localStorage.setItem('token', data.token)
+    })
 }
 
 export const updateUser = (user: User, pass: string, userId: string) => {
-  const reqData = { ...toBackUser(user), pass: pass, token:localStorage.getItem('token') }
-  if(reqData.password === '') reqData.password = pass
-  return axios
+  const reqData = { ...toBackUser(user), pass: pass, token: localStorage.getItem('token') }
+  if(reqData.password === undefined) reqData.password = pass
+  axios
     .put(`${BASE_URL}profile/${userId}`, reqData)
     .then((response) => response)
+    .then(({data}) => localStorage.setItem('user', JSON.stringify(data.user)))
 }
 
 export const logOut = () => {

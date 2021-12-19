@@ -43,10 +43,7 @@ export const Login = () => {
   })
   const onSubmit = (data: LoginUser) => {
     const user = { ...data }
-    loginUser(user).then(({ data }) => {
-      localStorage.setItem('user', JSON.stringify(data.user))
-      localStorage.setItem('token', data.token)
-    })
+    loginUser(user)
   }
 
   return (
