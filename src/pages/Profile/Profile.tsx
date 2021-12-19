@@ -68,7 +68,7 @@ const Form = styled.form`
 `
 
 const HandleClick = (data: User) => {
-  const result = updateUser(data)
+  //const result = updateUser(data)
   //if(result.codigo = 200 tal)
 }
 
