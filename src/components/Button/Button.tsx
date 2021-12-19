@@ -29,7 +29,7 @@ const ButtonContent = styled.span`
 
 export const Button: FC<ButtonProps> = ({
   icon,
-  theme = 'cyan',
+  theme = 'black',
   onClickHandler,
   text,
 }) => {

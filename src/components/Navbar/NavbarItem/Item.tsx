@@ -23,7 +23,7 @@ const Button = styled.button`
   height: 30px;
   color: ${(props: ButtonProps) => props.color};
   * {
-    font-size: 64px;
+    font-size: 50px;
   }
 `
 

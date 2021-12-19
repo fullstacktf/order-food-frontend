@@ -70,7 +70,6 @@ export const AllRestaurantsDetails = () => {
     fetch(`${BASE_URL}restaurants`).then((res) => res.json())
   )
 
-  console.log(data)
   if (isLoading) return <div>"Loading!"</div>
   else if (error) return <div>"Error"</div>
   else
@@ -80,8 +79,6 @@ export const AllRestaurantsDetails = () => {
         <RestaurantsContainer>
           {data.map((r: CurrentBackUser) => {
             const { city, street } = r.address[0]
-            const newLocation = 'restaurants/' + r.id
-            console.log(BASE_URL + newLocation)
             return (
               <StyledLink to={r.id}>
                 <StyledCard sx={{ width: 350 }}>
