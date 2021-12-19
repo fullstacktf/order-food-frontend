@@ -1,9 +1,11 @@
 import styled from '@emotion/styled'
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useQuery } from 'react-query'
 import { BASE_URL, toProfileUser, User } from '../../api/auth.api'
+import { Button } from '../../components/Button/Button'
 import { FormInput } from '../../components/FormInput/FormInput'
+import { FormDialog } from './components/DialogButton'
 import { profileResolver } from './ProfileResolver'
 
 interface FormColumnData {
@@ -41,41 +43,37 @@ const Column = styled.div`
   margin: 5px;
 `
 
-// Ew. Find another solution to this!
-const LeftColumn = styled(Column)`
-  padding-top: 13px;
-`
-
 const InnerContainer = styled.div`
   background-color: white;
   display: flex;
-  width: 100%;
+  width: 80%;
   border-radius: 20px;
   padding: 1%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`
+
+const Columns = styled.div`
+  display: flex;
+  width: 100%;
   margin-bottom: 1%;
   justify-content: center;
   align-items: center;
 `
 
-const Form = styled.form`
-  width: 80%;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: 100%;
-`
-
-const HandleClick = (data: User) => {
-  //const result = updateUser(data)
-  //if(result.codigo = 200 tal)
-}
-
 // TODO Sustituir por id del cliente logueado
 export const Profile = () => {
+  const [open, setOpen] = useState(false)
+
+  const HandleClick = (data: User) => {
+    setOpen(false)
+    //const result = updateUser(data)
+    //if(result.codigo = 200 tal)
+  }
+
   const { isLoading, error, data } = useQuery('profile', () =>
-    fetch(`${BASE_URL}clients/61be554065a7a1da79d0a9ea`).then((res) =>
+    fetch(`${BASE_URL}clients/61bf30021081b8ba22e7a78f`).then((res) =>
       res.json()
     )
   )
@@ -87,14 +85,26 @@ export const Profile = () => {
     resolver: profileResolver,
   })
 
+  const dialog = {
+    name: 'pass',
+    buttonText: 'Update Profile',
+    title: 'We need your password',
+    text: 'Insert your password in order to update your profile',
+    input: {
+      label: 'Password',
+      type: 'password',
+    },
+    register: register,
+  }
+
   if (error) return <div>"Error"</div>
-  if (!isLoading) {
+  else if (!isLoading) {
     const profile = toProfileUser(data)
     profile.password = 'pass de ejemplo'
     return (
       <Container>
-        <Form onSubmit={handleSubmit(HandleClick)}>
-          <InnerContainer>
+        <InnerContainer>
+          <Columns>
             <Column>
               {leftColumn.map(function (value, i) {
                 return (
@@ -109,7 +119,7 @@ export const Profile = () => {
                 )
               })}
             </Column>
-            <LeftColumn>
+            <Column>
               {rightColumn.map(function (value, i) {
                 return (
                   <FormInput
@@ -122,10 +132,19 @@ export const Profile = () => {
                   />
                 )
               })}
-            </LeftColumn>
-          </InnerContainer>
-          <input type="submit" />
-        </Form>
+            </Column>
+          </Columns>
+          <Button
+            text={dialog.buttonText}
+            onClickHandler={() => setOpen(true)}
+          ></Button>
+          <FormDialog
+            open={open}
+            data={dialog}
+            handleSubmit={handleSubmit(HandleClick)}
+            handleClose={() => setOpen(false)}
+          />
+        </InnerContainer>
       </Container>
     )
   } else return <div></div>

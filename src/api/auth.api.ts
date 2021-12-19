@@ -67,9 +67,10 @@ export const signUp = (newUser: User) => {
     .then((response) => console.log(response))
 }
 
-export const updateUser = (user: User) => {
+export const updateUser = (user: User, pass: string) => {
+  const reqData = { ...toBackUser(user), pass: pass }
   return axios
-    .put(`${BASE_URL}profile/61be554065a7a1da79d0a9ea`, toBackUser(user))
+    .put(`${BASE_URL}profile/61be554065a7a1da79d0a9ea`, reqData)
     .then((response) => response)
 }
 
