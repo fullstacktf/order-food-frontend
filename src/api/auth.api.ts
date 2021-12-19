@@ -72,7 +72,7 @@ export const loginUser = (user: LoginUser) => {
 }
 
 export const updateUser = (user: User, pass: string, userId: string) => {
-  const reqData = { ...toBackUser(user), pass: pass }
+  const reqData = { ...toBackUser(user), pass: pass, token:localStorage.getItem('token') }
   if(reqData.password === '') reqData.password = pass
   return axios
     .put(`${BASE_URL}profile/${userId}`, reqData)
