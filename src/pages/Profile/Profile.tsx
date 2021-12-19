@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useQuery } from 'react-query'
-import { BASE_URL, toProfileUser, User } from '../../api/auth.api'
+import { BASE_URL, toProfileUser, updateUser, User } from '../../api/auth.api'
 import { Button } from '../../components/Button/Button'
 import { FormInput } from '../../components/FormInput/FormInput'
 import { FormDialog } from './components/FormDialog'
@@ -64,6 +64,7 @@ const Columns = styled.div`
 
 // TODO Sustituir por id del cliente logueado
 export const Profile = () => {
+  const userId = JSON.parse(localStorage.getItem('user')!).id
   const [open, setOpen] = useState(false)
   const {
     register,
@@ -73,15 +74,13 @@ export const Profile = () => {
     resolver: profileResolver,
   })
   const { isLoading, error, data } = useQuery('profile', () =>
-    fetch(`${BASE_URL}clients/61bf30021081b8ba22e7a78f`).then((res) =>
-      res.json()
-    )
+    fetch(`${BASE_URL}clients/${userId}`).then((res) => res.json())
   )
 
   const HandleClick = (data: User & { pass: string }) => {
     if (data.pass !== '') {
       setOpen(false)
-      //const result = updateUser(data, data.pass)
+      updateUser(data, data.pass, userId).then((data) => console.log(data))
       // store response data into localStorage (new user Data)
       //if(result.codigo = 200 tal)
     }
@@ -99,7 +98,8 @@ export const Profile = () => {
     register: register,
   }
   if (error) return <div>"Error"</div>
-  else if (!isLoading) {
+  if (isLoading) return <div>"Loading"</div>
+  else {
     const profile = toProfileUser(data)
     return (
       <Container>
@@ -147,5 +147,5 @@ export const Profile = () => {
         </InnerContainer>
       </Container>
     )
-  } else return <div></div>
+  }
 }

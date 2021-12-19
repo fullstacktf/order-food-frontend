@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import { FormInput } from '../../components/FormInput/FormInput'
-import { LoginUser, signIn } from '../../api/auth.api'
+import { LoginUser, loginUser } from '../../api/auth.api'
 
 const Container = styled.div`
   margin: 0;
@@ -43,7 +43,10 @@ export const Login = () => {
   })
   const onSubmit = (data: LoginUser) => {
     const user = { ...data }
-    signIn(user)
+    loginUser(user).then(({ data }) => {
+      localStorage.setItem('user', JSON.stringify(data.user))
+      localStorage.setItem('token', data.token)
+    })
   }
 
   return (
