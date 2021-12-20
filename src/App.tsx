@@ -6,9 +6,7 @@ import './index.css'
 
 const App = observer(() => {
   const authStore = useAuthStore()
-  useEffect(() => {
-    document.title = 'comidit.app'
-  }, [])
+
   return <MainRouter isLogged={authStore.isLoggedIn}></MainRouter>
 })
 
