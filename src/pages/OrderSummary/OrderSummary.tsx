@@ -1,5 +1,4 @@
 import styled from '@emotion/styled'
-import React, { useState } from 'react'
 import { Address } from './components/Address/Address'
 import { Button } from '../../components/Button/Button'
 import { PaymentTotalPrice } from './components/PaymentTotalPrice/PaymentTotalPrice'
@@ -41,31 +40,6 @@ const CartSummary = styled.div`
   flex-direction: column;
   justify-content: space-between;
 `
-
-// This should come from localStorage
-const products = [
-  {
-    name: 'bulbasu',
-    category: 'videogames',
-    image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',
-    price: 45.2,
-  },
-  {
-    name: 'bulbaso number chu',
-    category: 'videogames',
-    image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',
-    price: 45.2,
-  },
-  {
-    name: 'bulbaso number tri',
-    category: 'videogames',
-    image:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',
-    price: 45.2,
-  },
-]
 
 export const OrderSummary = observer(() => {
   const userStore = useAuthStore()

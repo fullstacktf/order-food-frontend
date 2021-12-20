@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC } from 'react'
 import { Button } from '../../../../components/Button/Button'
 import { useCartStore } from '../../../../contexts/StoreProvider'
 import { ProductCounter } from '../ProductCounter/ProductCounter'
