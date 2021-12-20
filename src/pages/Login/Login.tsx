@@ -1,10 +1,12 @@
 import styled from '@emotion/styled'
+import { yupResolver } from '@hookform/resolvers/yup'
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup'
+import { useNavigate } from 'react-router-dom'
 import * as yup from 'yup'
+import { LoginUser } from '../../api/auth.api'
 import { FormInput } from '../../components/FormInput/FormInput'
-import { LoginUser, loginUser } from '../../api/auth.api'
+import { useAuthStore } from '../../contexts/StoreProvider'
 
 const Container = styled.div`
   margin: 0;
@@ -41,9 +43,15 @@ export const Login = () => {
   } = useForm({
     resolver: yupResolver(schema),
   })
+
+  const store = useAuthStore()
+  const navigate = useNavigate()
+
   const onSubmit = (data: LoginUser) => {
     const user = { ...data }
-    loginUser(user)
+    store.login(user)
+    if (store.isLoggedIn) navigate('/')
+    // TODO: else
   }
 
   return (

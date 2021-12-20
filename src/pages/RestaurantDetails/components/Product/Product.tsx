@@ -5,8 +5,7 @@ import Avatar from '@mui/material/Avatar'
 import Snackbar from '@mui/material/Snackbar'
 import React, { FC, useState } from 'react'
 import { Button } from '../../../../components/Button/Button'
-import { ProductInfo } from '../../models/ProductInfo.model'
-import { ProductProps } from '../../models/ProductProps.model'
+import { ProductInfo, ProductProps } from '../../models/Product'
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
   props,

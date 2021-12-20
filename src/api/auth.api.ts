@@ -1,6 +1,7 @@
 import axios from 'axios'
 
-export const BASE_URL = process.env.REACT_APP_BASE_URL || 'https://api.comidit.app/'
+export const BASE_URL =
+  process.env.REACT_APP_BASE_URL || 'https://api.comidit.app/'
 
 export type User = Omit<BackUser, 'address'> & Address
 
@@ -64,8 +65,7 @@ export const registerUser = (newUser: User) => {
     .post(`${BASE_URL}auth/register`, toBackUser(newUser))
     .then((response) => response)
     .then(({ data }) => {
-      localStorage.setItem('user', JSON.stringify(data.user))
-      localStorage.setItem('token', data.token)
+      return { user: data.user, token: data.token }
     })
 }
 
@@ -74,20 +74,19 @@ export const loginUser = (user: LoginUser) => {
     .post(`${BASE_URL}auth/login`, user)
     .then((response) => response)
     .then(({ data }) => {
-      localStorage.setItem('user', JSON.stringify(data.user))
-      localStorage.setItem('token', data.token)
+      return { user: data.user, token: data.token }
     })
 }
 
 export const updateUser = (user: User, pass: string, userId: string) => {
-  const reqData = { ...toBackUser(user), pass: pass, token: localStorage.getItem('token') }
-  if(reqData.password === undefined) reqData.password = pass
+  const reqData = {
+    ...toBackUser(user),
+    pass: pass,
+    token: localStorage.getItem('token'),
+  }
+  if (reqData.password === undefined) reqData.password = pass
   axios
     .put(`${BASE_URL}profile/${userId}`, reqData)
     .then((response) => response)
-    .then(({data}) => localStorage.setItem('user', JSON.stringify(data.user)))
-}
-
-export const logOut = () => {
-  localStorage.clear()
+    .then(({ data }) => localStorage.setItem('user', JSON.stringify(data.user)))
 }

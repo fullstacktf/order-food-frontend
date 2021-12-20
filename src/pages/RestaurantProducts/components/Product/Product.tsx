@@ -4,7 +4,7 @@ import Edit from '@mui/icons-material/Edit'
 import Avatar from '@mui/material/Avatar'
 import React, { FC } from 'react'
 import { Button } from '../../../../components/Button/Button'
-import { ProductProps } from '../../../RestaurantDetails/models/ProductProps.model'
+import { ProductProps } from '../../../RestaurantDetails/models/Product'
 
 const IMAGE_URL = 'https://manz.dev/assets/stickers/gopher.png'
 
