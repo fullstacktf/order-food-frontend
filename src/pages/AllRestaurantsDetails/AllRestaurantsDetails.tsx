@@ -20,9 +20,11 @@ const Container = styled.div`
 
 const RestaurantsContainer = styled.div`
   display: flex;
+  justify-content: center;
   text-align: center;
   width: 90%;
   height: fit-content;
+  flex-wrap: wrap;
 `
 const IMAGE_URL = 'https://manz.dev/assets/stickers/gopher.png'
 
@@ -80,7 +82,7 @@ export const AllRestaurantsDetails = () => {
           {data.map((r: CurrentBackUser) => {
             const { city, street } = r.address[0]
             return (
-              <StyledLink to={r.id}>
+              <StyledLink key={r.id} to={r.id}>
                 <StyledCard sx={{ width: 350 }}>
                   <CardActionArea>
                     <CardMedia
