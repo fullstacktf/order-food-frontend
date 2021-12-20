@@ -1,8 +1,6 @@
-import React from 'react'
-import { Navigate } from 'react-router-dom'
-import { logOut } from '../../api/auth.api'
+import { useAuthStore } from '../../contexts/StoreProvider'
 
 export const Logout = () => {
-  logOut()
-  return <Navigate to="/" />
+  const store = useAuthStore()
+  store.logout()
 }

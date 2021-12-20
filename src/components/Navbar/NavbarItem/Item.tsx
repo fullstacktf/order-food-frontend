@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 interface ItemProps {
   icon: any
   to: string
+  handler?: () => void
 }
 
 interface ButtonProps {
@@ -27,9 +28,9 @@ const Button = styled.button`
   }
 `
 
-export const Item: FC<ItemProps> = ({ icon, to }) => {
+export const Item: FC<ItemProps> = ({ icon, to, handler }) => {
   return (
-    <Button as={Link} to={to} color="black">
+    <Button as={Link} to={to} color="black" onClick={handler}>
       {icon}
     </Button>
   )

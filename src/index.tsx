@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
 import App from './App'
+import { AppProviders } from './contexts/AppProviders'
 import './index.css'
 import reportWebVitals from './reportWebVitals'
 
@@ -10,7 +11,9 @@ const queryClient = new QueryClient()
 
 ReactDOM.render(
   <QueryClientProvider client={queryClient}>
-    <App />
+    <AppProviders>
+      <App />
+    </AppProviders>
     <ReactQueryDevtools />
   </QueryClientProvider>,
   document.getElementById('root')

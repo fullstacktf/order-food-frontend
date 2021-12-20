@@ -1,14 +1,15 @@
 import styled from '@emotion/styled'
+import { observer } from 'mobx-react'
 import React from 'react'
 import { Navigate, Routes } from 'react-router'
 import { BrowserRouter, Route } from 'react-router-dom'
 import { Navbar } from './components/Navbar/Navbar'
+import { useAuthStore } from './contexts/StoreProvider'
 import './index.css'
 import { AllRestaurantsDetails } from './pages/AllRestaurantsDetails/AllRestaurantsDetails'
 import { Error404 } from './pages/Error404'
 import { Home } from './pages/Home/Home'
 import { Login } from './pages/Login/Login'
-import { Logout } from './components/Logout/Logout'
 import { OrderSummary } from './pages/OrderSummary/OrderSummary'
 import { Profile } from './pages/Profile/Profile'
 import { Register } from './pages/Register/Register'
@@ -34,12 +35,12 @@ const LoggedRoutes = [
   { path: '/summary', element: OrderSummary },
   { path: '/restaurants/:id', element: RestaurantDetails },
   { path: '/profile', element: Profile },
-  { path: '/logout', element: Logout },
   { path: '*', element: Error404 },
 ]
 
-const App = () => {
-  if (!localStorage.getItem('token'))
+const App = observer(() => {
+  const authStore = useAuthStore()
+  if (!authStore.isLoggedIn)
     return (
       <MainApp>
         <BrowserRouter>
@@ -73,6 +74,6 @@ const App = () => {
         </BrowserRouter>
       </MainApp>
     )
-}
+})
 
 export default App
