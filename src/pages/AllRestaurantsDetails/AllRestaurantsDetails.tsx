@@ -15,7 +15,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 100vw;
+  width: 95vw;
 `
 
 const RestaurantsContainer = styled.div`

@@ -5,7 +5,8 @@ import Avatar from '@mui/material/Avatar'
 import Snackbar from '@mui/material/Snackbar'
 import React, { FC, useState } from 'react'
 import { Button } from '../../../../components/Button/Button'
-import { ProductInfo, ProductProps } from '../../models/Product'
+import { useCartStore } from '../../../../contexts/StoreProvider'
+import { ProductInfo, ProductProps } from '../../../../models/Product'
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
   props,
@@ -49,18 +50,20 @@ export const Product: FC<ProductProps> = ({
   price,
   image = IMAGE_URL,
 }) => {
+  const store = useCartStore()
+
   const [SuccessOpen, setSuccessOpen] = useState(false)
   const [ErrorOpen, setErrorOpen] = useState(false)
 
-  const addItemToLocalStorage = () => {
+  const addProduct = () => {
     const data: ProductInfo = {
       name,
       price,
       category,
     }
-    if (!localStorage.getItem(name)) {
+    const result = store.addProduct(data)
+    if (result) {
       setSuccessOpen(!SuccessOpen)
-      localStorage.setItem(name, JSON.stringify(data))
     } else setErrorOpen(!ErrorOpen)
   }
 
@@ -71,7 +74,6 @@ export const Product: FC<ProductProps> = ({
     if (reason === 'clickaway') {
       return
     }
-
     setSuccessOpen(false)
     setErrorOpen(false)
   }
@@ -95,7 +97,7 @@ export const Product: FC<ProductProps> = ({
         </DataItem>
       </ProductData>
       <Button
-        onClickHandler={addItemToLocalStorage}
+        onClickHandler={addProduct}
         theme="black"
         text="Add to cart"
         icon={<AddShoppingCartIcon />}

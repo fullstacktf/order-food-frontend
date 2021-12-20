@@ -12,7 +12,7 @@ import { useAuthStore } from '../../contexts/StoreProvider'
 const Container = styled.div`
   margin: 0;
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: center;

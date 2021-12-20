@@ -9,7 +9,7 @@ import { BASE_URL } from '../../api/auth.api'
 import { Title } from '../../components/Title/Title'
 import { AddressDetails } from './components/AddressDetails/AddressDetails'
 import { Product } from './components/Product/Product'
-import { ProductInfo } from './models/Product'
+import { ProductInfo } from '../../models/Product'
 
 const Container = styled.div`
   display: flex;
@@ -17,7 +17,7 @@ const Container = styled.div`
   align-items: center;
   flex-direction: column;
   text-align: center;
-  width: 100vw;
+  width: 95vw;
 `
 
 const ProductsContainer = styled(Container)`
@@ -49,6 +49,7 @@ const products: ProductInfo[] = [
     price: 4.2,
   },
 ]
+
 export interface Restaurant {
   id?: string
   role?: string
@@ -84,7 +85,7 @@ export const RestaurantDetails = () => {
   // const [user, setUser] = useState({} as any)
 
   useEffect(() => {
-    console.log('cositas peludas:', { id, data })
+    // console.log('cositas peludas:', { id, data })
     // setUser({ data })
   }, [id, data])
 
@@ -92,7 +93,7 @@ export const RestaurantDetails = () => {
   else if (error) return <div>Error!</div>
   return (
     <Container>
-      {console.log('data dentro del componente: ', data)}
+      {/* {console.log('data dentro del componente: ', data)} */}
       <Avatar
         sx={{ width: 68, height: 68 }}
         alt="Comiditapp Restaurant"
