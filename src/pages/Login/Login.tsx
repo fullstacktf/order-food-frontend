@@ -57,8 +57,9 @@ export const Login = () => {
 
   const onSubmit = (data: LoginUser) => {
     const user = { ...data }
-    store.login(user)
-    if (store.isLoggedIn) navigate('/')
+    store.login(user).then(() => {
+      if (store.isLoggedIn) navigate('/')
+    })
     // TODO: else
   }
 

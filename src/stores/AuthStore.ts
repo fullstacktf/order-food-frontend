@@ -1,4 +1,4 @@
-import { action, computed, observable } from 'mobx'
+import { action, computed, makeAutoObservable, observable } from 'mobx'
 import { LoginUser, loginUser, registerUser, User } from '../api/auth.api'
 
 export default class AuthStore {
@@ -7,6 +7,7 @@ export default class AuthStore {
   @observable user: User | null = null
 
   constructor() {
+    makeAutoObservable(this)
     this.userToken = null
     this.user = null
   }
