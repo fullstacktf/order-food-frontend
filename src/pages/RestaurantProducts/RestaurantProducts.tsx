@@ -4,7 +4,7 @@ import Avatar from '@mui/material/Avatar'
 import React from 'react'
 import { Button } from '../../components/Button/Button'
 import { Title } from '../../components/Title/Title'
-import { ProductInfo } from '../RestaurantDetails/models/Product'
+import { ProductInfo } from '../../models/Product'
 import { Product } from './components/Product/Product'
 
 const Container = styled.div`
@@ -13,7 +13,7 @@ const Container = styled.div`
   align-items: center;
   flex-direction: column;
   text-align: center;
-  width: 100vw;
+  width: 95vw;
 `
 
 const ProductsContainer = styled(Container)`

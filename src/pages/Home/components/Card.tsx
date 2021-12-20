@@ -10,9 +10,9 @@ const StyledCard = styled.div`
   align-items: center;
   flex-direction: column;
   border-radius: 1rem;
-  margin-left: 3%;
-  background-color: #eeecee;
-  padding: 5px;
+  background: linear-gradient(145deg, #eeeaea 65%, #bbb7b7 45%);
+  padding: 1em;
+  border: 2px solid black;
 `
 
 const ButtonContainer = styled.div`
@@ -26,14 +26,15 @@ export const Card = () => {
   return (
     <StyledCard>
       <Title name="¿Tienes hambrita?" />
+      <h2>Entra ya</h2>
       <ButtonContainer>
         <Button
-          theme="black"
+          theme="dark grey"
           text="Register"
           onClickHandler={() => navigate('/register')}
         />
         <Button
-          theme="black"
+          theme="dark grey"
           text="Login"
           onClickHandler={() => navigate('/login')}
         />

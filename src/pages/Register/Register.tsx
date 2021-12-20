@@ -15,7 +15,7 @@ interface FormColumnData {
 const Container = styled.div`
   margin: 0;
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;

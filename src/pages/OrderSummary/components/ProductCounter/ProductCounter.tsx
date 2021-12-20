@@ -1,10 +1,7 @@
 import styled from '@emotion/styled'
 import React, { FC, SyntheticEvent, useEffect, useState } from 'react'
 import { Button } from '../../../../components/Button/Button'
-
-interface ProductCounterProps {
-  updateTotalPrice: (quantity: number) => void
-}
+import { useCartStore } from '../../../../contexts/StoreProvider'
 
 /*const buttonStyle = `
   cursor: pointer;
@@ -14,6 +11,9 @@ interface ProductCounterProps {
 `*/
 
 const Container = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
   width: 10%;
 `
 
@@ -34,39 +34,24 @@ const NumberInput = styled.input`
   }
 `
 
-export const ProductCounter: FC<ProductCounterProps> = ({
-  updateTotalPrice,
-}) => {
-  const [quantity, setQuantity] = useState(1)
-  const [inputValue, setInputValue] = useState(quantity)
+interface counterProps {
+  productName: string
+}
+
+export const ProductCounter: FC<counterProps> = ({ productName }) => {
+  const store = useCartStore()
 
   const handleClick = (delta: number) => () => {
-    setQuantity(Math.max(quantity + delta, 1))
+    store.incrementProduct(productName, delta)
   }
-
-  const inputChange = (e: SyntheticEvent) => {
-    const { value } = e.target as HTMLInputElement
-    setInputValue(Math.max(Number(value), 1))
-  }
-
-  useEffect(() => {
-    setInputValue(quantity)
-    updateTotalPrice(quantity)
-  }, [quantity, updateTotalPrice])
-
-  useEffect(() => {
-    setQuantity(inputValue)
-  }, [inputValue, updateTotalPrice])
 
   return (
-    <Container className="flex_centered around">
+    <Container>
       <Button text="-" onClickHandler={handleClick(-1)}></Button>
       <NumberInput
         type="number"
         min="1"
-        placeholder={quantity.toString()}
-        value={inputValue}
-        onChange={inputChange}
+        placeholder={store.productQuantity(productName)?.toString()}
       />
       <Button text="+" onClickHandler={handleClick(1)}></Button>
     </Container>

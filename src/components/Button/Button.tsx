@@ -33,8 +33,15 @@ export const Button: FC<ButtonProps> = ({
   onClickHandler,
   text,
 }) => {
+  if (onClickHandler)
+    return (
+      <StyledButton theme={theme} onClick={() => onClickHandler()}>
+        {icon && <ButtonContent>{icon}</ButtonContent>}
+        {text && <ButtonContent>{text}</ButtonContent>}
+      </StyledButton>
+    )
   return (
-    <StyledButton theme={theme} onClick={onClickHandler}>
+    <StyledButton theme={theme}>
       {icon && <ButtonContent>{icon}</ButtonContent>}
       {text && <ButtonContent>{text}</ButtonContent>}
     </StyledButton>

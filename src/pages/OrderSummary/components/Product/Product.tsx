@@ -1,9 +1,20 @@
 import styled from '@emotion/styled'
 import React, { FC, useEffect, useState } from 'react'
 import { Button } from '../../../../components/Button/Button'
+import { useCartStore } from '../../../../contexts/StoreProvider'
 import { ProductCounter } from '../ProductCounter/ProductCounter'
 
+const Container = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+`
+
 const ProductData = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   width: 16.67%;
 `
 
@@ -18,25 +29,16 @@ const ProductName = styled.p`
 `
 
 const ProductCategory = styled.p`
-  color: red;
+  color: black;
   width: 100%;
 `
 
 const ButtonHolder = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 4%;
 `
-
-/*const DeleteButtonStyle = `
-  background: #f23445;
-  border: 1px solid black;
-  box-shadow: 2px 2px 1px black;
-  padding: 5px;
-  border-radius: 15px;
-  :hover {
-    transform: scale(1.1);
-    background: #eeee;
-  }
-`*/
 
 const ProductImage = styled.img`
   width: 10%;
@@ -44,32 +46,22 @@ const ProductImage = styled.img`
 
 interface ProductProps {
   name: string
-  image: string
+  image?: string
   category: string
   price: number
-  handleTotalPrice: (totalPrice: number, price: number) => void
 }
 
-export const Product: FC<ProductProps> = ({
-  name,
-  category,
-  image,
-  price,
-  handleTotalPrice,
-}) => {
-  const [totalPrice, setTotalPrice] = useState(price)
-  const updateTotalPriceFun = (quantity: number) => {
-    setTotalPrice(quantity * price)
+export const Product: FC<ProductProps> = ({ name, category, image, price }) => {
+  const cartStore = useCartStore()
+
+  const handleDelete = () => {
+    cartStore.removeProduct(name)
   }
 
-  useEffect(() => {
-    handleTotalPrice(totalPrice, price)
-  }, [totalPrice, handleTotalPrice, price])
-
   return (
-    <div className="product_holder flex_centered around">
+    <Container>
       <ProductImage src={image} alt={name} />
-      <ProductData className="flex_centered columns">
+      <ProductData>
         <ProductName>
           <strong> {name} </strong>
         </ProductName>
@@ -77,12 +69,14 @@ export const Product: FC<ProductProps> = ({
           <strong> {category} </strong>
         </ProductCategory>
       </ProductData>
-      <ProductCounter updateTotalPrice={updateTotalPriceFun}></ProductCounter>
+      <ProductCounter productName={name}></ProductCounter>
       <PricedText>Price: {price} €</PricedText>
-      <PricedText>Total: {totalPrice.toFixed(2)} €</PricedText>
-      <ButtonHolder className="flex_centered">
-        <Button text="🗑️"></Button>
+      <PricedText>
+        Total: {cartStore.productTotal(name).toFixed(2)} €
+      </PricedText>
+      <ButtonHolder>
+        <Button text="🗑️" onClickHandler={handleDelete}></Button>
       </ButtonHolder>
-    </div>
+    </Container>
   )
 }

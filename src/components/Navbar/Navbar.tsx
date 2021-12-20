@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
+import ShoppingCart from '@mui/icons-material/ShoppingCart'
 import FastfoodIcon from '@mui/icons-material/Fastfood'
 import LogoutIcon from '@mui/icons-material/Logout'
 import { Logout } from '../Logout/Logout'
@@ -11,7 +12,8 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
-  position: fixed;
+  width: 5vw;
+  min-width: 5vw;
 `
 
 const NavbarContainer = styled.div`
@@ -21,7 +23,6 @@ const NavbarContainer = styled.div`
   height: 90vh;
   justify-content: space-around;
   box-shadow: 2px 2px 8px black;
-  z-index: 1;
   border-bottom-right-radius: 15px;
   border-top-right-radius: 15px;
   background: white;
@@ -33,6 +34,7 @@ export const Navbar = () => {
       <NavbarContainer>
         <Item to="/restaurants" icon={<FastfoodIcon />}></Item>
         <Item to="/profile" icon={<AccountCircleIcon />}></Item>
+        <Item to="/summary" icon={<ShoppingCart />}></Item>
         <Item to="/" icon={<LogoutIcon />} handler={() => Logout()}></Item>
       </NavbarContainer>
     </Container>
