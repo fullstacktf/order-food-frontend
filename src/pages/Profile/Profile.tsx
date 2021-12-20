@@ -2,9 +2,10 @@ import styled from '@emotion/styled'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useQuery } from 'react-query'
-import { BASE_URL, toProfileUser, updateUser, User } from '../../api/auth.api'
+import { BASE_URL, toProfileUser, User } from '../../api/auth.api'
 import { Button } from '../../components/Button/Button'
 import { FormInput } from '../../components/FormInput/FormInput'
+import { useAuthStore } from '../../contexts/StoreProvider'
 import { FormDialog } from './components/FormDialog'
 import { profileResolver } from './ProfileResolver'
 
@@ -62,9 +63,9 @@ const Columns = styled.div`
   align-items: center;
 `
 
-// TODO Sustituir por id del cliente logueado
 export const Profile = () => {
-  const userId = JSON.parse(localStorage.getItem('user')!).id
+  const store = useAuthStore()
+  const userId = store.user ? store.user.id : ''
   const [open, setOpen] = useState(false)
   const {
     register,
@@ -80,7 +81,7 @@ export const Profile = () => {
   const HandleClick = (data: User & { pass: string }) => {
     if (data.pass !== '') {
       setOpen(false)
-      updateUser(data, data.pass, userId)
+      store.update(data, data.pass, userId)
     }
   }
 

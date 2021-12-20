@@ -1,4 +1,4 @@
-import { useLocalStore } from 'mobx-react'
+import { useLocalObservable } from 'mobx-react'
 import { createContext, FC, useContext } from 'react'
 import AuthStore from '../stores/AuthStore'
 import { RootStore } from '../stores/RootStore'
@@ -17,7 +17,7 @@ const createStores = () => (): StoreContextProps => {
 }
 
 export const StoreProvider: FC = ({ children }) => {
-  const store = useLocalStore(createStores())
+  const store = useLocalObservable(createStores())
   return <StoreContext.Provider value={store}>{children}</StoreContext.Provider>
 }
 

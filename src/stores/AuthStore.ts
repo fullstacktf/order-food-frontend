@@ -1,10 +1,10 @@
 import { action, computed, makeAutoObservable, observable } from 'mobx'
-import { LoginUser, loginUser, registerUser, User } from '../api/auth.api'
+import { BackUser, LoginUser, loginUser, registerUser, updateUser, User } from '../api/auth.api'
 
 export default class AuthStore {
   @observable userToken: string | null = null
 
-  @observable user: User | null = null
+  @observable user: (BackUser & { id: string }) | null = null
 
   constructor() {
     makeAutoObservable(this)
@@ -31,6 +31,15 @@ export default class AuthStore {
       const { user, token } = await registerUser(values)
       this.user = user
       this.userToken = token
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  @action update = async (values: User, pass: string, userId: string) => {
+    try {
+      const { user } = await updateUser(values, pass, userId, this.userToken!)
+      this.user = user
     } catch (error) {
       console.log(error)
     }
