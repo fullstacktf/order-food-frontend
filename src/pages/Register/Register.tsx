@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { registerUser, User } from '../../api/auth.api'
 import { FormInput } from '../../components/FormInput/FormInput'
+import { Title } from '../../components/Title/Title'
 import { registerResolver } from './registerResolver'
 
 interface FormColumnData {
@@ -18,6 +19,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 `
 
 const Column = styled.div`
@@ -40,13 +42,19 @@ const InnerContainer = styled.div`
 `
 
 const Form = styled.form`
+  background-color: white;
   width: 60%;
   margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 100%;
+  padding: 20px;
+  border-radius: 20px;
+`
+
+const SubmitButton = styled.input`
+  margin-top: 10px;
 `
 
 const Selector = styled(Select)`
@@ -96,6 +104,7 @@ export const Register = () => {
 
   return (
     <Container>
+      <Title name="Create your account"></Title>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <InnerContainer>
           <Column>
@@ -130,7 +139,7 @@ export const Register = () => {
             })}
           </LeftColumn>
         </InnerContainer>
-        <input type="submit" />
+        <SubmitButton type="submit" />
       </Form>
     </Container>
   )
