@@ -26,18 +26,6 @@ const ButtonHolder = styled.div`
   width: 4%;
 `
 
-/*const DeleteButtonStyle = `
-  background: #f23445;
-  border: 1px solid black;
-  box-shadow: 2px 2px 1px black;
-  padding: 5px;
-  border-radius: 15px;
-  :hover {
-    transform: scale(1.1);
-    background: #eeee;
-  }
-`*/
-
 const ProductImage = styled.img`
   width: 10%;
 `
