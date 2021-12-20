@@ -1,7 +1,8 @@
 import styled from '@emotion/styled'
+import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import FastfoodIcon from '@mui/icons-material/Fastfood'
 import LogoutIcon from '@mui/icons-material/Logout'
-import AccountCircleIcon from '@mui/icons-material/AccountCircle'
+import { Logout } from '../Logout/Logout'
 import { Item } from './NavbarItem/Item'
 
 const Container = styled.div`
@@ -32,7 +33,7 @@ export const Navbar = () => {
       <NavbarContainer>
         <Item to="/restaurants" icon={<FastfoodIcon />}></Item>
         <Item to="/profile" icon={<AccountCircleIcon />}></Item>
-        <Item to="/logout" icon={<LogoutIcon />}></Item>
+        <Item to="/" icon={<LogoutIcon />} handler={() => Logout()}></Item>
       </NavbarContainer>
     </Container>
   )
