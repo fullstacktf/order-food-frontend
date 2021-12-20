@@ -5,24 +5,32 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import { FormInput } from '../../components/FormInput/FormInput'
 import { LoginUser, loginUser } from '../../api/auth.api'
+import { Title } from '../../components/Title/Title'
 
 const Container = styled.div`
   margin: 0;
   height: 100vh;
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 `
 
 const Form = styled.form`
+  background-color: white;
   width: 60%;
   margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 100%;
+  padding: 20px;
+  border-radius: 20px;
+`
+
+const SubmitButton = styled.input`
+  margin-top: 10px;
 `
 
 const schema = yup
@@ -48,6 +56,7 @@ export const Login = () => {
 
   return (
     <Container>
+      <Title name="Log into your account"></Title>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <FormInput
           type="text"
@@ -61,7 +70,7 @@ export const Login = () => {
           errors={errors}
           register={register}
         />
-        <input type="submit" />
+        <SubmitButton type="submit" />
       </Form>
     </Container>
   )

@@ -1,8 +1,8 @@
-import styled from "@emotion/styled";
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import { Button } from "../../../components/Button/Button";
-import { Title } from "../../../components/Title/Title";
+import styled from '@emotion/styled'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
+import { Button } from '../../../components/Button/Button'
+import { Title } from '../../../components/Title/Title'
 
 const StyledCard = styled.div`
   display: flex;
@@ -12,18 +12,17 @@ const StyledCard = styled.div`
   border-radius: 1rem;
   margin-left: 3%;
   background-color: #eeecee;
-  width: 35%;
-  height: 100%;
-`;
+  padding: 5px;
+`
 
 const ButtonContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-`;
+`
 
 export const Card = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   return (
     <StyledCard>
       <Title name="¿Tienes hambrita?" />
@@ -31,14 +30,14 @@ export const Card = () => {
         <Button
           theme="black"
           text="Register"
-          onClickHandler={() => navigate("/register")}
+          onClickHandler={() => navigate('/register')}
         />
         <Button
           theme="black"
           text="Login"
-          onClickHandler={() => navigate("/login")}
+          onClickHandler={() => navigate('/login')}
         />
       </ButtonContainer>
     </StyledCard>
-  );
-};
+  )
+}
