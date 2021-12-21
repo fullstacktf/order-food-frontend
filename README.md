@@ -88,8 +88,9 @@ In order for the page to be full functioning, you should have a copy of [our bac
 
 ## Roadmap
 
-According to our MVP we will develop this features. The unchecked ones are extra features we would like to work on after.
 We're still working on Comidit.App. Meanwhile, you can [check our progress](https://github.com/fullstacktf/order-food-frontend/projects/1) (kanban board).
+
+According to our MVP we will develop this features. The unchecked ones are extra features we would like to work on after.
 
 - [x] Restaurants
   - [x] Manage Menu and Products
