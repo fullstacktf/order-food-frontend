@@ -4,7 +4,14 @@ import Edit from '@mui/icons-material/Edit'
 import Avatar from '@mui/material/Avatar'
 import React, { FC } from 'react'
 import { Button } from '../../../../components/Button/Button'
-import { ProductProps } from '../../../../models/Product'
+
+interface productProps {
+  productId: string
+  category?: string
+  name: string
+  price: number
+  image?: string
+}
 
 const IMAGE_URL = 'https://manz.dev/assets/stickers/gopher.png'
 
@@ -39,7 +46,7 @@ const ButtonHolder = styled.div`
   display: flex;
 `
 
-export const Product: FC<ProductProps> = ({
+export const Product: FC<productProps> = ({
   category,
   name,
   price,

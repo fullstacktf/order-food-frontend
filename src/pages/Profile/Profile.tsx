@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import axios from 'axios'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useQuery } from 'react-query'
@@ -74,8 +75,13 @@ export const Profile = () => {
   } = useForm({
     resolver: profileResolver,
   })
+
   const { isLoading, error, data } = useQuery('profile', () =>
-    fetch(`${BASE_URL}clients/${userId}`).then((res) => res.json())
+    axios
+      .get(`${BASE_URL}profile/${userId}?token=${store.userToken}`)
+      .then(({ data }) => {
+        return toProfileUser(data)
+      })
   )
 
   const HandleClick = (data: User & { pass: string }) => {
@@ -84,7 +90,6 @@ export const Profile = () => {
       store.update(data, data.pass, userId)
     }
   }
-
   const dialog = {
     name: 'pass',
     buttonText: 'Update Profile',
@@ -99,7 +104,6 @@ export const Profile = () => {
   if (error) return <div>"Error"</div>
   if (isLoading) return <div>"Loading"</div>
   else {
-    const profile = toProfileUser(data)
     return (
       <Container>
         <InnerContainer>
@@ -113,7 +117,7 @@ export const Profile = () => {
                     errors={errors}
                     register={register}
                     key={i}
-                    initialValue={profile[value.name]}
+                    initialValue={data![value.name]}
                   />
                 )
               })}
@@ -127,7 +131,7 @@ export const Profile = () => {
                     errors={errors}
                     register={register}
                     key={i}
-                    initialValue={profile[value.name]}
+                    initialValue={data![value.name]}
                   />
                 )
               })}

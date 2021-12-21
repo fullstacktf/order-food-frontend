@@ -11,7 +11,6 @@ export const makeOrder = (
     products,
     token,
   }
-  console.log(reqData)
   return axios
     .post(`${BASE_URL}restaurants/${restaurantId}/orders`, reqData)
     .then((response) => response)
