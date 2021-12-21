@@ -45,9 +45,11 @@ const StyledAvatar = styled(Avatar)`
 `
 
 export const Product: FC<ProductProps> = ({
+  productId,
   category,
   name,
   price,
+  restaurantId,
   image = IMAGE_URL,
 }) => {
   const store = useCartStore()
@@ -57,11 +59,12 @@ export const Product: FC<ProductProps> = ({
 
   const addProduct = () => {
     const data: ProductInfo = {
+      productId,
       name,
       price,
       category,
     }
-    const result = store.addProduct(data)
+    const result = store.addProduct(data, restaurantId)
     if (result) {
       setSuccessOpen(!SuccessOpen)
     } else setErrorOpen(!ErrorOpen)
