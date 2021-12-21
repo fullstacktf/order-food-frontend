@@ -61,7 +61,6 @@ export const RestaurantDetails = () => {
   else if (error) return <div>Error!</div>
   return (
     <Container>
-      {console.log(data)}
       <Avatar
         sx={{ width: 68, height: 68 }}
         alt={`${data.name} image`}

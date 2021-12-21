@@ -1,5 +1,8 @@
+import styled from '@emotion/styled'
 import React, { FC } from 'react'
-
+import { Navigate, Routes } from 'react-router'
+import { BrowserRouter, Route } from 'react-router-dom'
+import { AllOrders } from '../../pages/AllOrders/AllOrders'
 import { AllRestaurantsDetails } from '../../pages/AllRestaurantsDetails/AllRestaurantsDetails'
 import { Error404 } from '../../pages/Error404'
 import { Home } from '../../pages/Home/Home'
@@ -9,9 +12,6 @@ import { Profile } from '../../pages/Profile/Profile'
 import { Register } from '../../pages/Register/Register'
 import { RestaurantDetails } from '../../pages/RestaurantDetails/RestaurantDetails'
 import { RestaurantProducts } from '../../pages/RestaurantProducts/RestaurantProducts'
-import styled from '@emotion/styled'
-import { Navigate, Routes } from 'react-router'
-import { BrowserRouter, Route } from 'react-router-dom'
 import { Navbar } from '../Navbar/Navbar'
 
 const MainApp = styled.div`
@@ -32,6 +32,7 @@ const LoggedRoutes = [
   { path: '/products', element: RestaurantProducts },
   { path: '/summary', element: OrderSummary },
   { path: '/restaurants/:id', element: RestaurantDetails },
+  { path: '/orders', element: AllOrders },
   { path: '/profile', element: Profile },
   { path: '*', element: Error404 },
 ]
