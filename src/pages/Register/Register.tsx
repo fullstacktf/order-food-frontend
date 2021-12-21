@@ -2,9 +2,11 @@ import styled from '@emotion/styled'
 import { InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { registerUser, User } from '../../api/auth.api'
+import { useNavigate } from 'react-router-dom'
+import { User } from '../../api/auth.api'
 import { FormInput } from '../../components/FormInput/FormInput'
 import { Title } from '../../components/Title/Title'
+import { useAuthStore } from '../../contexts/StoreProvider'
 import { registerResolver } from './registerResolver'
 
 interface FormColumnData {
@@ -88,10 +90,13 @@ export const Register = () => {
     resolver: registerResolver,
   })
 
-  // Careful with this! We probably should split data before
-  // storing it... Depends on the back response
+  const store = useAuthStore()
+  const navigate = useNavigate()
+
   const onSubmit = (data: User) => {
-    registerUser(data)
+    store.register(data).then(() => {
+      if (store.isLoggedIn) navigate('/')
+    })
   }
 
   const handleOnChange = (event: SelectChangeEvent<unknown>) => {

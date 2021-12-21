@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import { observer } from 'mobx-react'
+import { useNavigate } from 'react-router-dom'
 import { makeOrder } from '../../api/order.api'
 import { Button } from '../../components/Button/Button'
 import { useAuthStore, useCartStore } from '../../contexts/StoreProvider'
@@ -45,6 +46,7 @@ const CartSummary = styled.div`
 export const OrderSummary = observer(() => {
   const userStore = useAuthStore()
   const cartStore = useCartStore()
+  const navigate = useNavigate()
 
   const order = () => {
     // todo: user should pay before making their order lol
@@ -55,6 +57,8 @@ export const OrderSummary = observer(() => {
         cartStore.restaurantId || '',
         userStore.userToken || ''
       )
+    cartStore.clear()
+    navigate('/')
   }
 
   return (
