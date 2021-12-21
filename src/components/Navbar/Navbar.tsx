@@ -1,9 +1,9 @@
 import styled from '@emotion/styled'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
-import ShoppingCart from '@mui/icons-material/ShoppingCart'
 import FastfoodIcon from '@mui/icons-material/Fastfood'
 import LogoutIcon from '@mui/icons-material/Logout'
-import { Logout } from '../Logout/Logout'
+import ShoppingCart from '@mui/icons-material/ShoppingCart'
+import { useAuthStore } from '../../contexts/StoreProvider'
 import { Item } from './NavbarItem/Item'
 
 const Container = styled.div`
@@ -29,13 +29,19 @@ const NavbarContainer = styled.div`
 `
 
 export const Navbar = () => {
+  const authStore = useAuthStore()
+
+  const logout = () => {
+    authStore.logout()
+  }
+
   return (
     <Container>
       <NavbarContainer>
         <Item to="/restaurants" icon={<FastfoodIcon />}></Item>
         <Item to="/profile" icon={<AccountCircleIcon />}></Item>
         <Item to="/summary" icon={<ShoppingCart />}></Item>
-        <Item to="/" icon={<LogoutIcon />} handler={() => Logout()}></Item>
+        <Item to="/" icon={<LogoutIcon />} handler={logout}></Item>
       </NavbarContainer>
     </Container>
   )
