@@ -4,6 +4,7 @@ import Avatar from '@mui/material/Avatar'
 import React from 'react'
 import { Button } from '../../components/Button/Button'
 import { Title } from '../../components/Title/Title'
+import { useAuthStore } from '../../contexts/StoreProvider'
 import { ProductInfo } from '../../models/Product'
 import { Product } from './components/Product/Product'
 
@@ -30,21 +31,25 @@ const Header = styled.div``
 
 const products: ProductInfo[] = [
   {
+    productId: '1',
     category: 'mainCourse',
     name: 'Bocadillo Clásico Embutidos',
     price: 1.4,
   },
   {
+    productId: '2',
     category: 'mainCourse',
     name: 'Perrito Especial Mexicano',
     price: 3.0,
   },
   {
+    productId: '3',
     category: 'appetizer',
     name: 'Ensaladilla',
     price: 42342.2,
   },
   {
+    productId: '4',
     category: 'appetizer',
     name: 'Bolitas de coco',
     price: 4.2,
@@ -52,6 +57,8 @@ const products: ProductInfo[] = [
 ]
 
 export const RestaurantProducts = () => {
+  const userStore = useAuthStore()
+
   // this handler and the handlers inside product should call services to insert, modify or delete product
   const addItemHandler = () => {}
 
@@ -74,7 +81,8 @@ export const RestaurantProducts = () => {
         </AddProductContainer>
         <ProductsContainer>
           {products.map((p) => (
-            <Product {...p}></Product>
+            // should probably use a different component?
+            <Product {...p} restaurantId={userStore.user!.id || ''}></Product>
           ))}
         </ProductsContainer>
       </Header>

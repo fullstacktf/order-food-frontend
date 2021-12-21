@@ -7,9 +7,9 @@ import { useQuery } from 'react-query'
 import { useParams } from 'react-router-dom'
 import { BASE_URL } from '../../api/auth.api'
 import { Title } from '../../components/Title/Title'
+import { ProductInfo } from '../../models/Product'
 import { AddressDetails } from './components/AddressDetails/AddressDetails'
 import { Product } from './components/Product/Product'
-import { ProductInfo } from '../../models/Product'
 
 const Container = styled.div`
   display: flex;
@@ -29,21 +29,25 @@ const Header = styled.div``
 
 const products: ProductInfo[] = [
   {
+    productId: '61c1ee305b6001c61989dc7e',
     category: 'mainCourse',
     name: 'Bocadillo Clásico Embutidos',
     price: 1.4,
   },
   {
+    productId: '61c1ee342d37dda6218258f2',
     category: 'mainCourse',
     name: 'Perrito Especial Mexicano',
     price: 3.0,
   },
   {
+    productId: '61c1ee39a876cf2e9afb17e6',
     category: 'appetizer',
     name: 'Ensaladilla',
     price: 42342.2,
   },
   {
+    productId: '61c1ee3bdc65371d839f8607',
     category: 'appetizer',
     name: 'Bolitas de coco',
     price: 4.2,
@@ -114,7 +118,7 @@ export const RestaurantDetails = () => {
         ></AddressDetails>
         <ProductsContainer>
           {products.map((p) => (
-            <Product key={p.name} {...p}></Product>
+            <Product key={p.name} {...p} restaurantId={id || ''}></Product>
           ))}
         </ProductsContainer>
       </Header>

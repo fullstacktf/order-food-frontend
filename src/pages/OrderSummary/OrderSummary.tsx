@@ -1,10 +1,11 @@
 import styled from '@emotion/styled'
-import { Address } from './components/Address/Address'
+import { observer } from 'mobx-react'
+import { makeOrder } from '../../api/order.api'
 import { Button } from '../../components/Button/Button'
+import { useAuthStore, useCartStore } from '../../contexts/StoreProvider'
+import { Address } from './components/Address/Address'
 import { PaymentTotalPrice } from './components/PaymentTotalPrice/PaymentTotalPrice'
 import { Product } from './components/Product/Product'
-import { useAuthStore, useCartStore } from '../../contexts/StoreProvider'
-import { observer } from 'mobx-react'
 
 const Container = styled.div`
   display: flex;
@@ -45,6 +46,17 @@ export const OrderSummary = observer(() => {
   const userStore = useAuthStore()
   const cartStore = useCartStore()
 
+  const order = () => {
+    // todo: user should pay before making their order lol
+    // todo: fix those || ''. Nasty
+    if (cartStore.numberOfItems > 0)
+      makeOrder(
+        cartStore.getOrderProducts(),
+        cartStore.restaurantId || '',
+        userStore.userToken || ''
+      )
+  }
+
   return (
     <Container>
       <AllProducts>
@@ -71,7 +83,7 @@ export const OrderSummary = observer(() => {
             number_of_items={cartStore.numberOfItems}
             total_price={cartStore.totalPrice}
           ></PaymentTotalPrice>
-          <Button text="Proceed to payment"></Button>
+          <Button text="Proceed to payment" onClickHandler={order}></Button>
         </CartSummary>
       </Summary>
     </Container>

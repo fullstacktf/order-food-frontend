@@ -47,7 +47,7 @@ const ProductImage = styled.img`
 interface ProductProps {
   name: string
   image?: string
-  category: string
+  category?: string
   price: number
 }
 
