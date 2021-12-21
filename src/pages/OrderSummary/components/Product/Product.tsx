@@ -4,6 +4,8 @@ import { Button } from '../../../../components/Button/Button'
 import { useCartStore } from '../../../../contexts/StoreProvider'
 import { ProductCounter } from '../ProductCounter/ProductCounter'
 
+const IMAGE_URL = 'https://manz.dev/assets/stickers/manzdevocado.png'
+
 const Container = styled.div`
   display: flex;
   justify-content: space-around;
@@ -41,6 +43,7 @@ const ButtonHolder = styled.div`
 `
 
 const ProductImage = styled.img`
+  image-rendering: pixelated;
   width: 10%;
 `
 
@@ -51,7 +54,12 @@ interface ProductProps {
   price: number
 }
 
-export const Product: FC<ProductProps> = ({ name, category, image, price }) => {
+export const Product: FC<ProductProps> = ({
+  name,
+  category,
+  image = IMAGE_URL,
+  price,
+}) => {
   const cartStore = useCartStore()
 
   const handleDelete = () => {
