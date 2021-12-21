@@ -6,7 +6,6 @@ interface AddressDetailsProps {
   country: string
   zipCode: number
   city: string
-  streetNumber: number
 }
 
 const AddressContainer = styled.div`
@@ -18,13 +17,10 @@ export const AddressDetails: FC<AddressDetailsProps> = ({
   country,
   zipCode,
   city,
-  streetNumber,
 }) => {
   return (
     <AddressContainer>
       {street
-        .concat(', ')
-        .concat(streetNumber.toString())
         .concat(', ')
         .concat(city)
         .concat(', ')

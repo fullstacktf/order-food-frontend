@@ -1,5 +1,12 @@
 import { action, computed, makeAutoObservable, observable } from 'mobx'
-import { BackUser, LoginUser, loginUser, registerUser, updateUser, User } from '../api/auth.api'
+import {
+  BackUser,
+  LoginUser,
+  loginUser,
+  registerUser,
+  updateUser,
+  User,
+} from '../api/auth.api'
 
 export default class AuthStore {
   @observable userToken: string | null = null
@@ -8,8 +15,14 @@ export default class AuthStore {
 
   constructor() {
     makeAutoObservable(this)
-    this.userToken = null
-    this.user = null
+    const user = localStorage.getItem('user')
+    const userToken = localStorage.getItem('userToken')
+    if (user) {
+      this.user = JSON.parse(user)
+    } else this.user = null
+    if (userToken) {
+      this.userToken = userToken
+    } else this.userToken = null
   }
 
   @computed get isLoggedIn() {
@@ -21,6 +34,7 @@ export default class AuthStore {
       const { user, token } = await loginUser(values)
       this.user = user
       this.userToken = token
+      this.storeCredentials()
     } catch (error) {
       console.log(error)
     }
@@ -31,9 +45,15 @@ export default class AuthStore {
       const { user, token } = await registerUser(values)
       this.user = user
       this.userToken = token
+      this.storeCredentials()
     } catch (error) {
       console.log(error)
     }
+  }
+
+  @action storeCredentials() {
+    localStorage.setItem('user', JSON.stringify(this.user!))
+    localStorage.setItem('userToken', this.userToken!)
   }
 
   @action update = async (values: User, pass: string, userId: string) => {
@@ -47,6 +67,8 @@ export default class AuthStore {
 
   @action logout = () => {
     // Should also clear the product basket?
+    localStorage.removeItem('user')
+    localStorage.removeItem('userToken')
     this.user = null
     this.userToken = null
   }

@@ -2,12 +2,12 @@ import styled from '@emotion/styled'
 import Avatar from '@mui/material/Avatar'
 import Rating from '@mui/material/Rating'
 import Typography from '@mui/material/Typography'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useQuery } from 'react-query'
 import { useParams } from 'react-router-dom'
 import { BASE_URL } from '../../api/auth.api'
 import { Title } from '../../components/Title/Title'
-import { ProductInfo } from '../../models/Product'
+import { ProductProps } from '../../models/Product'
 import { AddressDetails } from './components/AddressDetails/AddressDetails'
 import { Product } from './components/Product/Product'
 
@@ -26,33 +26,6 @@ const ProductsContainer = styled(Container)`
 `
 
 const Header = styled.div``
-
-const products: ProductInfo[] = [
-  {
-    productId: '61c1ee305b6001c61989dc7e',
-    category: 'mainCourse',
-    name: 'Bocadillo Clásico Embutidos',
-    price: 1.4,
-  },
-  {
-    productId: '61c1ee342d37dda6218258f2',
-    category: 'mainCourse',
-    name: 'Perrito Especial Mexicano',
-    price: 3.0,
-  },
-  {
-    productId: '61c1ee39a876cf2e9afb17e6',
-    category: 'appetizer',
-    name: 'Ensaladilla',
-    price: 42342.2,
-  },
-  {
-    productId: '61c1ee3bdc65371d839f8607',
-    category: 'appetizer',
-    name: 'Bolitas de coco',
-    price: 4.2,
-  },
-]
 
 export interface Restaurant {
   id?: string
@@ -74,11 +47,8 @@ export interface Address {
 function useRestaurant(id: string | undefined) {
   const { isLoading, error, data } = useQuery<any, any, any>(
     ['restaurants', id],
-    () => {
-      fetch(`${BASE_URL}restaurants/${id}`).then((res) => res.json())
-    }
+    () => fetch(`${BASE_URL}restaurants/${id}`).then((res) => res.json())
   )
-
   return { data, isLoading, error }
 }
 
@@ -86,38 +56,31 @@ export const RestaurantDetails = () => {
   const { id } = useParams()
 
   const { isLoading, error, data } = useRestaurant(id)
-  // const [user, setUser] = useState({} as any)
-
-  useEffect(() => {
-    // console.log('cositas peludas:', { id, data })
-    // setUser({ data })
-  }, [id, data])
 
   if (isLoading) return <div>Loading!</div>
   else if (error) return <div>Error!</div>
   return (
     <Container>
-      {/* {console.log('data dentro del componente: ', data)} */}
+      {console.log(data)}
       <Avatar
         sx={{ width: 68, height: 68 }}
-        alt="Comiditapp Restaurant"
+        alt={`${data.name} image`}
         src="https://images.vexels.com/media/users/3/143047/isolated/preview/b0c9678466af11dd45a62163bdcf03fe-icono-plano-de-hamburguesa-de-comida-rapida.png"
       ></Avatar>
       <Header>
-        <Title name="Calle el hambre"></Title>
+        <Title name={data.name}></Title>
         <Container>
           <Rating name="customized-5" defaultValue={2} max={5} />
           <Typography component="legend">(126 opinions)</Typography>
         </Container>
         <AddressDetails
-          city="Some city"
-          country="España"
-          street="Calle El Hambre"
-          zipCode={38204}
-          streetNumber={12}
+          city={data.address[0].city}
+          country={data.address[0].country}
+          street={data.address[0].street}
+          zipCode={data.address[0].zipCode}
         ></AddressDetails>
         <ProductsContainer>
-          {products.map((p) => (
+          {data.menu.map((p: ProductProps) => (
             <Product key={p.name} {...p} restaurantId={id || ''}></Product>
           ))}
         </ProductsContainer>
