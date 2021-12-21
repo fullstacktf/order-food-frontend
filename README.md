@@ -95,7 +95,6 @@ According to our MVP we will develop this features. The unchecked ones are extra
 - [x] Restaurants
   - [x] Manage Menu and Products
   - [x] Manage Orders
-  - [x] Manage Workers
   - [x] Manage Own Info
   - [ ] Offer tracking delivery (map)
 - [x] Clients
@@ -104,7 +103,7 @@ According to our MVP we will develop this features. The unchecked ones are extra
   - [x] Manage Own Info
   - [x] Delete Account
   - [ ] Mark & Check your favourite restaurants
-  - [ ] Give a review (stars)
+  - [ ] Give reviews (stars)
 
 <small><p align="right">(<a href="#top">back to top</a>)</p></small>
 
