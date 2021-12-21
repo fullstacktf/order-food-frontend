@@ -46,6 +46,11 @@ export default class CartStore {
     })
   }
 
+  @action clear() {
+    this.cartProducts = []
+    this.restaurantId = null
+  }
+
   @computed getOrderProducts(): ProductInfo[] {
     return this.cartProducts.map((product) => {
       return {
